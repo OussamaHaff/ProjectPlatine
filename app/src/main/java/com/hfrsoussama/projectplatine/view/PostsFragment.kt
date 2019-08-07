@@ -17,6 +17,8 @@ class PostsFragment : Fragment(), PostsListAdapter.OnItemClickListener {
 
     companion object {
         fun newInstance() = PostsFragment()
+
+        const val TAG = "PostsFragment"
     }
 
     private val sharedViewModel: MainViewModel by activityViewModels()
@@ -43,7 +45,7 @@ class PostsFragment : Fragment(), PostsListAdapter.OnItemClickListener {
     }
 
     override fun onItemClick(post: Post) {
-        sharedViewModel.selectedPost.value = post
+        sharedViewModel.updateSelectedPost(post)
     }
 
 }

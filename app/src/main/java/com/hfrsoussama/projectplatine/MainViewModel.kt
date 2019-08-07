@@ -3,8 +3,10 @@ package com.hfrsoussama.projectplatine
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.hfrsoussama.projectplatine.model.Comment
 import com.hfrsoussama.projectplatine.model.Post
 import com.hfrsoussama.projectplatine.model.PostsRepository
+import com.hfrsoussama.projectplatine.model.User
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -16,13 +18,13 @@ class MainViewModel : ViewModel() {
 
     val selectedPost by lazy { MutableLiveData<Post>() }
 
+    val selectedPostUser by lazy { MutableLiveData<User>() }
+
+    val selectedPostComments by lazy { MutableLiveData<List<Comment>>() }
+
     init {
         viewModelScope.launch {
-            val posts = PostsRepository().getPosts()
-            posts.let {
-                postsList.value = it
-                selectedPost.value = it.first()
-            }
+            postsList.value = PostsRepository().getPosts()
         }
     }
 
@@ -36,6 +38,33 @@ class MainViewModel : ViewModel() {
 
     private fun getThreadName(methodName: String) {
         println("$methodName running on thread : ${Thread.currentThread().name}")
+    }
+
+    fun updateSelectedPost(post: Post) {
+        selectedPost.value = post
+        updateSelectedUser(post)
+        updateSelectedPostComments(post)
+    }
+
+    private fun updateSelectedPostComments(post: Post) {
+        viewModelScope.launch {
+            selectedPostComments.value = withContext(Dispatchers.IO) {
+                delay(30_000)
+                PostsRepository().getCommentsByPostId(post.id)
+            }
+
+            println(selectedPostComments.value)
+        }
+    }
+
+    private fun updateSelectedUser(post: Post) {
+        viewModelScope.launch {
+            selectedPostUser.value = withContext(Dispatchers.IO) {
+                delay(30_000)
+                PostsRepository().getUser(post.userId)
+            }
+            println(selectedPostUser.value)
+        }
     }
 
     private companion object {
