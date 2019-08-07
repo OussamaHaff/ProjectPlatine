@@ -1,0 +1,69 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "kotlin-android-extensions"
+    id "io.gitlab.arturbosch.detekt" version "1.0.0-RC16"
+}
+
+android {
+    buildToolsVersion "29.0.1"
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.hfrsoussama.projectplatine"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    flavorDimensions "data"
+    productFlavors {
+        mock {
+            dimension "data"
+            applicationIdSuffix ".mock"
+        }
+        live {
+            dimension "data"
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+        }
+    }
+    sourceSets {
+        mock { assets.srcDirs = ['src/mock/assets', 'src/mock/assets/'] }
+    }
+}
+
+detekt {
+    toolVersion = "1.0.0-RC16"
+    input = files("src/main/java", "src/mock/java")
+    filters = ".*/resources/.*,.*/build/.*"
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
+
+    implementation 'androidx.core:core-ktx:1.0.2'
+    implementation 'androidx.fragment:fragment-ktx:1.2.0-alpha01'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0-alpha02'
+
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+
+    implementation 'com.squareup.retrofit2:retrofit:2.6.1'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}
