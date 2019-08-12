@@ -7,8 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
-import com.hfrsoussama.projectplatine.*
+import com.hfrsoussama.projectplatine.MainViewModel
+import com.hfrsoussama.projectplatine.R
+import com.hfrsoussama.projectplatine.model.Comment
 import com.hfrsoussama.projectplatine.model.Post
 import com.hfrsoussama.projectplatine.model.User
 import kotlinx.android.synthetic.main.fragment_post_details.*
@@ -22,29 +23,27 @@ class PostDetailsFragment : Fragment() {
 
     private val sharedViewModel: MainViewModel by activityViewModels()
 
-    private val fragmentViewModel by lazy {
-        ViewModelProviders.of(this)[PostDetailsViewModel::class.java]
-    }
-
     private val selectedPostObserver by lazy { Observer<Post> { onPostSelected(it) } }
 
     private val selectedPostUserObserver by lazy { Observer<User> { onUserReceived(it) } }
+
+    private val selectedPostCommentsObserver by lazy { Observer<List<Comment>> { onCommentsReceived(it) } }
+
+    private fun onCommentsReceived(commentsList: List<Comment>) {
+        tv_post_number_of_comments.text = "There are ${commentsList.size} comment, here they are \n$commentsList"
+    }
 
     private fun onUserReceived(user: User) {
         tv_post_author_name.text = user.name
     }
 
     private fun onPostSelected(post: Post) {
-        fragmentViewModel.selectedPost.value = post
         renderUiForPost(post)
     }
 
     private fun renderUiForPost(post: Post) {
         tv_post_title.text = post.title
         tv_post_body.text = post.body
-        tv_post_number_of_comments.text = CommentsProvider.getNumberOfCommentsForPost(
-            post
-        ).toString()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -53,8 +52,11 @@ class PostDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        sharedViewModel.selectedPost.observe(this, selectedPostObserver)
-        sharedViewModel.selectedPostUser.observe(this, selectedPostUserObserver)
+        sharedViewModel.apply {
+            selectedPost.observe(this@PostDetailsFragment, selectedPostObserver)
+            selectedPostUser.observe(this@PostDetailsFragment, selectedPostUserObserver)
+            selectedPostComments.observe(this@PostDetailsFragment, selectedPostCommentsObserver)
+        }
     }
 
 }

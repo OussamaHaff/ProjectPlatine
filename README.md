@@ -3,5 +3,8 @@
 - ViewModel Extension Functions KTX
 - LiveData
 - Mock variant with different application id 
+- Coroutines
+- Parallel Coroutines
+
 
 

@@ -71,8 +71,6 @@ class MainActivity : BaseActivity() {
         }
 
         addPostDetailsFragmentIfNeeded(isTablet())
-
-
     }
 
     private fun addPostDetailsFragmentIfNeeded(isTablet: Boolean) {
