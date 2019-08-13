@@ -7,8 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import coil.api.load
+import coil.transform.CircleCropTransformation
 import com.hfrsoussama.projectplatine.MainViewModel
 import com.hfrsoussama.projectplatine.R
+import com.hfrsoussama.projectplatine.generateAvatarHttpUrl
 import com.hfrsoussama.projectplatine.model.Comment
 import com.hfrsoussama.projectplatine.model.Post
 import com.hfrsoussama.projectplatine.model.User
@@ -35,6 +38,11 @@ class PostDetailsFragment : Fragment() {
 
     private fun onUserReceived(user: User) {
         tv_post_author_name.text = user.name
+        iv_author_avatar.load(user.generateAvatarHttpUrl()) {
+            crossfade(true)
+            placeholder(android.R.drawable.ic_input_add)
+            transformations(CircleCropTransformation())
+        }
     }
 
     private fun onPostSelected(post: Post) {
