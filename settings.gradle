@@ -1,1 +1,1 @@
-include ':app'
+include ':app', ':feat_posts_ui', ':feat_posts_core'
