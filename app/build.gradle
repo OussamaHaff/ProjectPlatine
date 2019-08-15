@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    buildToolsVersion "29.0.1"
+    buildToolsVersion "29.0.2"
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.hfrsoussama.projectplatine"
@@ -71,6 +71,8 @@ dependencies {
     implementation project(':feat_posts_ui')
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    implementation 'com.jakewharton.timber:timber:4.7.1'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'

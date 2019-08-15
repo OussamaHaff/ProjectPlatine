@@ -3,12 +3,13 @@ package com.hfrsoussama.projectplatine.feat.posts.ui.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.hfrsoussama.projectplatine.feat.posts.core.PostsRepository
-import com.hfrsoussama.projectplatine.feat.posts.ui.extensions.launch
 import com.hfrsoussama.projectplatine.feat.posts.core.model.Comment
 import com.hfrsoussama.projectplatine.feat.posts.core.model.Post
 import com.hfrsoussama.projectplatine.feat.posts.core.model.User
+import com.hfrsoussama.projectplatine.feat.posts.ui.extensions.launch
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import timber.log.Timber
 
 class MainViewModel : ViewModel() {
 
@@ -22,7 +23,15 @@ class MainViewModel : ViewModel() {
 
     init {
         launch {
-            postsList.value = PostsRepository().getPosts()
+            postsList.value =
+                try {
+                    withContext(Dispatchers.IO) { PostsRepository().getPosts()}
+
+                } catch (e: Throwable) {
+                    Timber.e(e)
+                    emptyList()
+                }
+
         }
     }
 

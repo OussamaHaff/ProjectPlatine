@@ -29,8 +29,8 @@ class PostsFragment : Fragment(), PostsListAdapter.OnItemClickListener {
 
     private fun renderListOfPosts(posts: List<Post>) {
         rv_posts_list?.apply {
-            layoutManager = LinearLayoutManager(context)
             adapter = PostsListAdapter(posts, this@PostsFragment)
+            layoutManager = LinearLayoutManager(context)
         }
     }
 
