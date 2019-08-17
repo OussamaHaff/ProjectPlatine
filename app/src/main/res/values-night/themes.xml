@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!--Top level DayNight theme to be used in AndroidManifest.xml-->
+
     <style name="AppTheme" parent="AppTheme.Base">
+        <!--  in Dark Mode the status bar will take the same color as the app bar which is the surface color   -->
+        <item name="android:statusBarColor">?colorSurface</item>
         <item name="android:windowLightStatusBar" tools:ignore="NewApi">false</item>
+
         <item name="android:windowLightNavigationBar" tools:ignore="NewApi">false</item>
     </style>
 

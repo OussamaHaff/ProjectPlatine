@@ -2,7 +2,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="AppTheme" parent="AppTheme.Base">
-        <item name="colorPrimaryDark">@android:color/holo_green_light</item>
 
     </style>
 
@@ -47,15 +46,17 @@
 
 
     <style name="AppTheme.Base.Material.DayNight" parent="Theme.MaterialComponents.DayNight">
-
+        <!--
         <item name="android:statusBarColor">?colorSurface</item>
-        <item name="android:windowLightStatusBar" tools:ignore="NewApi">true</item>
-        <item name="android:navigationBarColor">?android:colorBackground</item>
-        <item name="android:windowLightNavigationBar" tools:ignore="NewApi">true</item>
-        <item name="android:navigationBarDividerColor" tools:ignore="NewApi">?colorControlHighlight</item>
+                <item name="android:windowLightStatusBar" tools:ignore="NewApi">true</item>
+                <item name="android:navigationBarColor">?android:colorBackground</item>
+                <item name="android:windowLightNavigationBar" tools:ignore="NewApi">true</item>
+                <item name="android:navigationBarDividerColor" tools:ignore="NewApi">?colorControlHighlight</item>
+                -->
 
         <!--Remap legacy AppCompat attributes to MaterialComponent attributes-->
         <item name="colorAccent">?colorSecondary</item>
+        <item name="colorPrimaryDark">?colorPrimaryVariant</item>
     </style>
 
 </resources>
