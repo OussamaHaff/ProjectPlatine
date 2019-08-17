@@ -28,6 +28,8 @@ class PostsListAdapter(
     class PostViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bindToPost(post: Post, listener: OnItemClickListener) {
             itemView.tv_post_title.text = post.title
+            itemView.tv_post_body.text = post.body
+            itemView.tv_user_name.text = post.userId.toString()
             itemView.setOnClickListener { listener.onItemClick(post) }
         }
     }

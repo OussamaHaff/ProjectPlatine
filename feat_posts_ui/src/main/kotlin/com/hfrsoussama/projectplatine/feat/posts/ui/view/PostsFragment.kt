@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.hfrsoussama.projectplatine.feat.posts.ui.viewmodel.MainViewModel
 import com.hfrsoussama.projectplatine.feat.posts.ui.R
 import com.hfrsoussama.projectplatine.feat.posts.core.model.Post
@@ -31,7 +32,7 @@ class PostsFragment : Fragment(), PostsListAdapter.OnItemClickListener {
     private fun renderListOfPosts(posts: List<Post>) {
         rv_posts_list?.apply {
             adapter = PostsListAdapter(posts, this@PostsFragment)
-            layoutManager = LinearLayoutManager(context)
+            layoutManager = LinearLayoutManager(context).apply { orientation =  RecyclerView.HORIZONTAL }
             layoutAnimation =
                 AnimationUtils.loadLayoutAnimation(this@PostsFragment.context, R.anim.layout_animation_easy_drop)
         }
