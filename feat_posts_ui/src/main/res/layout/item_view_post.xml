@@ -40,7 +40,7 @@
         <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:background="@color/color_primary_light">
+                android:background="?colorPrimaryLight">
 
             <TextView
                     android:layout_width="match_parent"

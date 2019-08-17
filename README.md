@@ -9,7 +9,7 @@
     - Color Theming ✅
     - Dark Theme ✅
     - Shape Theming ⭕️
-    - Typography Theming ⭕️
+    - Typography Theming ✅
 
 
 

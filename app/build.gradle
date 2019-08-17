@@ -69,6 +69,7 @@ detekt {
 dependencies {
     implementation project(':feat_posts_core')
     implementation project(':feat_posts_ui')
+    implementation project(':app_theming')
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
