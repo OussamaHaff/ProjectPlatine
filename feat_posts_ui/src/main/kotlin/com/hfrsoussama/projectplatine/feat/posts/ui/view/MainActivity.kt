@@ -2,12 +2,17 @@ package com.hfrsoussama.projectplatine.feat.posts.ui.view
 
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.fragment.app.commitNow
 import androidx.lifecycle.Observer
-import com.hfrsoussama.projectplatine.feat.posts.ui.R
+import androidx.transition.ChangeBounds
+import androidx.transition.Fade
 import com.hfrsoussama.projectplatine.feat.posts.ui.viewmodel.MainViewModel
 import com.hfrsoussama.projectplatine.feat.posts.core.model.Post
 import kotlinx.android.synthetic.main.activity_main.*
+import androidx.transition.TransitionInflater
+import androidx.transition.TransitionSet
+import com.hfrsoussama.projectplatine.feat.posts.ui.R
+import kotlinx.android.synthetic.main.fragment_post_details.*
+
 
 class MainActivity : BaseActivity() {
 
@@ -44,13 +49,21 @@ class MainActivity : BaseActivity() {
             // Do nothing, the Post Details Fragment should be already attached
         } else {
             // Attach the fragment
-            supportFragmentManager.commitNow {
-                replace(
-                    main_fragment_container.id,
-                    PostDetailsFragment.newInstance(),
-                    PostDetailsFragment.TAG
-                )
+            val postDetailsFragment = PostDetailsFragment.newInstance().apply {
+                sharedElementEnterTransition = DetailsTransition()
+                enterTransition = Fade()
+                exitTransition = Fade()
+                sharedElementReturnTransition = DetailsTransition()
             }
+
+            supportFragmentManager.beginTransaction()
+                .addToBackStack(null)
+                .addSharedElement(
+                    findViewById(com.hfrsoussama.projectplatine.feat.posts.ui.R.id.tv_post_title),
+                    tv_post_title.transitionName
+                )
+                .replace(main_fragment_container.id, postDetailsFragment, PostDetailsFragment.TAG)
+                .commit()
         }
     }
 
@@ -62,24 +75,27 @@ class MainActivity : BaseActivity() {
         viewModel.postsList.observe(this, postsListObserver)
         viewModel.selectedPost.observe(this, selectedPostObserver)
 
-        supportFragmentManager.commitNow {
-            replace(
-                main_fragment_container.id,
-                PostsFragment.newInstance(),
-                PostsFragment.TAG
-            )
-        }
+        supportFragmentManager.beginTransaction()
+            .replace(main_fragment_container.id, PostsFragment.newInstance(), PostsFragment.TAG)
+            .commitNow()
+
 
         addPostDetailsFragmentIfNeeded(isTablet())
     }
 
     private fun addPostDetailsFragmentIfNeeded(isTablet: Boolean) {
         if (isTablet) {
-            supportFragmentManager.commitNow {
-                replace(post_details_fragment_container.id,
-                    PostDetailsFragment.newInstance()
-                )
-            }
+            supportFragmentManager.beginTransaction()
+                .addToBackStack(null)
+                .replace(post_details_fragment_container.id, PostDetailsFragment.newInstance())
+                .commitNow()
         }
+    }
+}
+
+class DetailsTransition : TransitionSet() {
+    init {
+        ordering = ORDERING_TOGETHER
+        addTransition(ChangeBounds())
     }
 }

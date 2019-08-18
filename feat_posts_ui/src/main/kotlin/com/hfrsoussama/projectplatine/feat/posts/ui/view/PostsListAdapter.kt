@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.hfrsoussama.projectplatine.feat.posts.ui.R
 import com.hfrsoussama.projectplatine.feat.posts.core.model.Post
 import kotlinx.android.synthetic.main.item_view_post.view.*
+import timber.log.Timber
 
 class PostsListAdapter(
     private val postsList: List<Post>,
@@ -21,6 +22,8 @@ class PostsListAdapter(
     override fun getItemCount() = postsList.size
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
+        holder.itemView.tv_post_title.transitionName = "post_title_${postsList[position].id}"
+        Timber.d(holder.itemView.tv_post_title.transitionName)
         holder.bindToPost(postsList[position], listener)
     }
 
