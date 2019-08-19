@@ -32,9 +32,21 @@ class PostsFragment : Fragment(), PostsListAdapter.OnItemClickListener {
     private fun renderListOfPosts(posts: List<Post>) {
         rv_posts_list?.apply {
             adapter = PostsListAdapter(posts, this@PostsFragment)
-            layoutManager = LinearLayoutManager(context).apply { orientation =  RecyclerView.HORIZONTAL }
-            layoutAnimation =
-                AnimationUtils.loadLayoutAnimation(this@PostsFragment.context, R.anim.layout_animation_easy_drop)
+
+            layoutManager = LinearLayoutManager(context).apply {
+                orientation =  RecyclerView.HORIZONTAL
+            }
+
+            layoutAnimation = AnimationUtils.loadLayoutAnimation(
+                this@PostsFragment.context,
+                R.anim.layout_animation_easy_drop
+            )
+
+            addItemDecoration(
+                PostsRecyclerViewItemDecoration(
+                    resources.getDimension(R.dimen.recycler_view_medium_item_spacing).toInt()
+                )
+            )
         }
     }
 
