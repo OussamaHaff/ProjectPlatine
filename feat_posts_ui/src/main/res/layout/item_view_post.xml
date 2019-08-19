@@ -8,6 +8,7 @@
         android:layout_height="480dp"
         app:cardCornerRadius="24dp"
         android:elevation="16dp"
+        android:id="@+id/cv_post_card"
 >
 
     <LinearLayout
