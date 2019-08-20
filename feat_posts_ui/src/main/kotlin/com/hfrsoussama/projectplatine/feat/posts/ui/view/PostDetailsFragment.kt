@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
 import coil.transform.CircleCropTransformation
 import com.hfrsoussama.projectplatine.feat.posts.ui.R
@@ -33,7 +35,12 @@ class PostDetailsFragment : Fragment() {
     private val selectedPostCommentsObserver by lazy { Observer<List<Comment>> { onCommentsReceived(it) } }
 
     private fun onCommentsReceived(commentsList: List<Comment>) {
-        tv_post_number_of_comments.text = "There are ${commentsList.size} comment, here they are \n$commentsList"
+        rv_comments_list?.apply {
+            adapter = CommentsListAdapter(commentsList)
+            layoutManager = LinearLayoutManager(context).apply {
+                orientation = RecyclerView.VERTICAL
+            }
+        }
     }
 
     private fun onUserReceived(user: User) {
