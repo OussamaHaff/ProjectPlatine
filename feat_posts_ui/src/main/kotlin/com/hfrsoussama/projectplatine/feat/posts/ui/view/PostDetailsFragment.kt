@@ -50,7 +50,7 @@ class PostDetailsFragment : Fragment() {
     }
 
     private fun renderUiForPost(post: Post) {
-        tv_post_body.text = post.title
+        tv_post_title.text = post.title
         tv_post_body.text = post.body
     }
 
