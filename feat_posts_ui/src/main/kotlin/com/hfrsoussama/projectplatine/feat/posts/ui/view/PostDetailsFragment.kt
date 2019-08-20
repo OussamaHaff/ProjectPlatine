@@ -52,6 +52,7 @@ class PostDetailsFragment : Fragment() {
     private fun renderUiForPost(post: Post) {
         tv_post_title.text = post.title
         tv_post_body.text = post.body
+        tv_post_author_name.text = post.userId.toString()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

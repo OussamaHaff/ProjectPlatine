@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -8,35 +9,71 @@
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content">
 
-        <TextView
-                android:id="@+id/tv_post_title"
+        <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.AppTheme.Headline6"
-        />
+                app:cardCornerRadius="24dp"
+                android:elevation="16dp"
+                android:layout_marginTop="-24dp"
+                android:layout_marginStart="@dimen/recycler_view_medium_item_spacing"
+                android:layout_marginEnd="@dimen/recycler_view_medium_item_spacing"
+                android:id="@+id/cv_post_card"
+        >
 
-        <TextView
-                android:id="@+id/tv_post_body"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-        />
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:orientation="horizontal">
-            <TextView
-                    android:id="@+id/tv_post_author_name"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-            />
-            <ImageView
-                    android:id="@+id/iv_author_avatar"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"/>
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-        </LinearLayout>
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_post_title"
+                        android:layout_weight="0"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        tools:text="@tools:sample/cities"
+                        android:textAppearance="@style/TextAppearance.AppTheme.Headline6"/>
 
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:id="@+id/tv_post_body"
+                        android:layout_weight="1"
+                        android:layout_margin="16dp"
+                        tools:text="@tools:sample/cities"
+                        android:textAppearance="@style/TextAppearance.AppTheme.Body2"/>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:orientation="horizontal"
+                        android:background="?colorPrimaryLight">
+
+                    <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="12dp"
+                            android:layout_weight="1"
+                            android:id="@+id/tv_post_author_name"
+                            android:textAppearance="@style/TextAppearance.AppTheme.Subtitle2"
+                            tools:text="LeSam"/>
+
+                    <ImageView
+                            android:id="@+id/iv_author_avatar"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_marginEnd="8dp"
+                    android:layout_gravity="center_vertical"/>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>
 
         <TextView
                 android:id="@+id/tv_post_number_of_comments"
