@@ -45,6 +45,12 @@
         <item name="textAppearanceButton">@style/TextAppearance.MaterialComponents.Button</item>
         <item name="textAppearanceOverline">@style/TextAppearance.MaterialComponents.Overline</item>
 
+
+
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.Leaf.LargeComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.Leaf.MediumComponent</item>
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Leaf.SmallComponent</item>
+
     </style>
 
 
