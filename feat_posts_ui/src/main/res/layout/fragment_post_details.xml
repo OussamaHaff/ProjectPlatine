@@ -1,81 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <androidx.constraintlayout.motion.widget.MotionLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
-            android:orientation="vertical"
-                  android:layout_width="match_parent"
-                  android:layout_height="match_parent"
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
         app:layoutDescription="@xml/motion_scene_comments_list">
 
-        <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cv_post_card"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="24dp"
-                android:layout_weight="0"
-                android:elevation="16dp"
-                app:cardCornerRadius="24dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+    <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cv_post_card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_weight="0"
+            android:elevation="16dp"
+            app:cardCornerRadius="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+            <TextView
+                    android:id="@+id/tv_post_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_weight="0"
+                    android:textAppearance="@style/TextAppearance.AppTheme.Headline6"
+                    tools:text="@tools:sample/cities" />
+
+            <TextView
+                    android:id="@+id/tv_post_body"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_margin="16dp"
+                    android:layout_weight="1"
+                    android:textAppearance="@style/TextAppearance.AppTheme.Body2"
+                    tools:text="@tools:sample/cities" />
 
             <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:layout_height="48dp"
+                    android:background="?colorPrimaryLight"
+                    android:orientation="horizontal">
 
                 <TextView
-                        android:id="@+id/tv_post_title"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:layout_weight="0"
-                        android:textAppearance="@style/TextAppearance.AppTheme.Headline6"
-                        tools:text="@tools:sample/cities" />
-
-                <TextView
-                        android:id="@+id/tv_post_body"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_margin="16dp"
+                        android:id="@+id/tv_post_author_name"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="12dp"
                         android:layout_weight="1"
-                        android:textAppearance="@style/TextAppearance.AppTheme.Body2"
-                        tools:text="@tools:sample/cities" />
+                        android:textAppearance="@style/TextAppearance.AppTheme.Subtitle2"
+                        tools:text="LeSam" />
 
-                <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:background="?colorPrimaryLight"
-                        android:orientation="horizontal">
-
-                    <TextView
-                            android:id="@+id/tv_post_author_name"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_margin="12dp"
-                            android:layout_weight="1"
-                            android:textAppearance="@style/TextAppearance.AppTheme.Subtitle2"
-                            tools:text="LeSam" />
-
-                    <ImageView
-                            android:id="@+id/iv_author_avatar"
-                            android:layout_width="32dp"
-                            android:layout_height="32dp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginEnd="8dp"
-                            android:contentDescription="@null" />
-
-                </LinearLayout>
-
+                <ImageView
+                        android:id="@+id/iv_author_avatar"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="8dp"
+                        android:contentDescription="@null" />
 
             </LinearLayout>
 
 
-        </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
 
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_comments_list"
