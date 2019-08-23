@@ -54,7 +54,7 @@
 
     <style name="TextAppearance.AppTheme.Subtitle2" parent="TextAppearance.MaterialComponents.Subtitle2">
         <item name="fontFamily">@font/open_sans</item>
-        <item name="android:textColor">?colorOnPrimary</item>
+        <item name="android:textColor">?colorOnSurface</item>
     </style>
 
     <style name="TextAppearance.AppTheme.Body1" parent="TextAppearance.MaterialComponents.Body1">

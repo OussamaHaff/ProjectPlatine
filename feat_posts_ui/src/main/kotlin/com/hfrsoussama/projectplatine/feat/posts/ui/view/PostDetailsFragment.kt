@@ -36,9 +36,16 @@ class PostDetailsFragment : Fragment() {
 
     private fun onCommentsReceived(commentsList: List<Comment>) {
         rv_comments_list?.apply {
+
             adapter = CommentsListAdapter(commentsList)
+
             layoutManager = LinearLayoutManager(context).apply {
                 orientation = RecyclerView.VERTICAL
+                addItemDecoration(
+                    CommentsRecyclerViewItemDecoration(
+                        resources.getDimension(R.dimen.comments_recycler_view_medium_item_spacing).toInt()
+                    )
+                )
             }
         }
     }

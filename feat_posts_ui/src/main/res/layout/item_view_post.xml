@@ -36,14 +36,12 @@
 
         <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:background="?colorPrimaryLight">
+                android:layout_height="48dp">
 
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="12dp"
-                    android:textColor="?colorOnPrimary"
                     android:id="@+id/tv_user_name"
                     tools:text="LeSam"/>
 

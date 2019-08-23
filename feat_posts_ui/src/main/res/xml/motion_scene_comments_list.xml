@@ -3,36 +3,50 @@
         xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <Transition
-            app:constraintSetEnd="@id/animation_kayframe_1"
-            app:constraintSetStart="@id/animation_kayframe_0"
+            app:constraintSetEnd="@id/animation_keyframe_1"
+            app:constraintSetStart="@id/animation_keyframe_0"
             app:duration="2000">
 
         <OnSwipe
                 app:touchAnchorId="@+id/rv_comments_list"
-                app:touchAnchorSide="top"
-                app:dragDirection="dragUp"/>
+                app:dragDirection="dragUp"
+                app:touchAnchorSide="top" />
 
 
     </Transition>
 
-    <ConstraintSet android:id="@+id/animation_kayframe_0">
+    <ConstraintSet android:id="@+id/animation_keyframe_0">
+        <Constraint android:id="@+id/cv_post_card">
+            <!-- To animate a CardView's Background color we must use the attribute
+             cardBackgroundColor instead of backgroundColor, otherwise the card view will lose
+             its shape -->
+            <CustomAttribute
+                    app:attributeName="cardBackgroundColor"
+                    app:customColorValue="?colorSurface" />
 
+
+        </Constraint>
 
     </ConstraintSet>
 
 
-    <ConstraintSet android:id="@+id/animation_kayframe_1">
+    <ConstraintSet android:id="@+id/animation_keyframe_1">
 
         <Constraint
                 android:id="@+id/cv_post_card"
-                android:layout_marginTop="1dp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                android:visibility="gone">
+            <CustomAttribute
+                    app:attributeName="cardBackgroundColor"
+                    app:customColorValue="?colorError" />
 
-                />
+        </Constraint>
+
     </ConstraintSet>
 
 </MotionScene>
