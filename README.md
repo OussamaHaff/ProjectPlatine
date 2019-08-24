@@ -9,7 +9,7 @@
 - Material Design Theming
     - Color Theming ✅
     - Dark Theme ✅
-    - Shape Theming ⭕️
+    - Shape Theming ✅️
     - Typography Theming ✅
 
 
