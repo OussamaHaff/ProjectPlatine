@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/hfrsoussama/ProjectPlatine.svg?token=Ukee6iqpqVmdChjemyE8&branch=master)](https://travis-ci.com/hfrsoussama/ProjectPlatine)
 - AndroidX Components
 - ViewModel
 - ViewModel Extension Functions KTX
