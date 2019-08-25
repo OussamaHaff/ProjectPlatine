@@ -12,11 +12,11 @@ android:
     - sys-img-x86-android-28
 
 
-
 script:
   - echo "Travis branch is $TRAVIS_BRANCH"
   - ./gradlew clean
-  - ./gradlew assembleLiveDebug --stacktrace
   - ./gradlew detekt --stacktrace
-  - ./gradlew feat_post_core:detekt --stacktrace
-  - ./gradlew feat_post_ui:detekt --stacktrace
+  - ./gradlew assembleLiveDebug --stacktrace
+
+before_cache:
+  - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
