@@ -20,6 +20,7 @@ android {
     productFlavors {
         live {
             dimension "data"
+            applicationIdSuffix ".live"
         }
         mock {
             dimension "data"
@@ -33,6 +34,7 @@ android {
         }
         debug {
             minifyEnabled false
+            applicationIdSuffix ".debug"
         }
     }
     sourceSets {
