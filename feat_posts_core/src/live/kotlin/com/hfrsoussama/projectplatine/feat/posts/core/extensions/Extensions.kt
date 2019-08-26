@@ -1,4 +1,4 @@
-package com.hfrsoussama.projectplatine.feat.posts.ui.extensions
+package com.hfrsoussama.projectplatine.feat.posts.core.extensions
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

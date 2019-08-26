@@ -5,7 +5,7 @@ import androidx.activity.viewModels
 import androidx.fragment.app.commitNow
 import androidx.lifecycle.Observer
 import com.hfrsoussama.projectplatine.feat.posts.ui.R
-import com.hfrsoussama.projectplatine.feat.posts.ui.viewmodel.MainViewModel
+import com.hfrsoussama.projectplatine.feat.posts.core.viewmodel.MainViewModel
 import com.hfrsoussama.projectplatine.feat.posts.core.model.Post
 import kotlinx.android.synthetic.main.activity_main.*
 

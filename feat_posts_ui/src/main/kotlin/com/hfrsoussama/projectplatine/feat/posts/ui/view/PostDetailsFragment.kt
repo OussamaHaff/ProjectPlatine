@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
 import coil.transform.CircleCropTransformation
 import com.hfrsoussama.projectplatine.feat.posts.ui.R
-import com.hfrsoussama.projectplatine.feat.posts.ui.viewmodel.MainViewModel
+import com.hfrsoussama.projectplatine.feat.posts.core.viewmodel.MainViewModel
 import com.hfrsoussama.projectplatine.feat.posts.core.model.extensions.generateAvatarHttpUrl
 import com.hfrsoussama.projectplatine.feat.posts.core.model.Comment
 import com.hfrsoussama.projectplatine.feat.posts.core.model.Post

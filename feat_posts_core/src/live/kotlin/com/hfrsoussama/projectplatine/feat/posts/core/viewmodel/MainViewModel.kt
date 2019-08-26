@@ -1,12 +1,12 @@
-package com.hfrsoussama.projectplatine.feat.posts.ui.viewmodel
+package com.hfrsoussama.projectplatine.feat.posts.core.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.hfrsoussama.projectplatine.feat.posts.core.PostsRepository
+import com.hfrsoussama.projectplatine.feat.posts.core.extensions.launch
 import com.hfrsoussama.projectplatine.feat.posts.core.model.Comment
 import com.hfrsoussama.projectplatine.feat.posts.core.model.Post
 import com.hfrsoussama.projectplatine.feat.posts.core.model.User
-import com.hfrsoussama.projectplatine.feat.posts.ui.extensions.launch
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import timber.log.Timber

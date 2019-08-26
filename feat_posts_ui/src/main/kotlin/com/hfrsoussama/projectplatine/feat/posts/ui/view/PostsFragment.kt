@@ -10,7 +10,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.hfrsoussama.projectplatine.feat.posts.ui.viewmodel.MainViewModel
+import com.hfrsoussama.projectplatine.feat.posts.core.viewmodel.MainViewModel
 import com.hfrsoussama.projectplatine.feat.posts.ui.R
 import com.hfrsoussama.projectplatine.feat.posts.core.model.Post
 import kotlinx.android.synthetic.main.fragment_posts.*
