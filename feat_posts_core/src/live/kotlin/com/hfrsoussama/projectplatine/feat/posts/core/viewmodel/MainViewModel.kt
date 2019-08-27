@@ -1,5 +1,6 @@
 package com.hfrsoussama.projectplatine.feat.posts.core.viewmodel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.hfrsoussama.projectplatine.feat.posts.core.PostsRepository
@@ -13,19 +14,31 @@ import timber.log.Timber
 
 class MainViewModel : ViewModel() {
 
-    val postsList by lazy { MutableLiveData<List<Post>>() }
+    private val _postsList by lazy { MutableLiveData<List<Post>>() }
+    val postsList: LiveData<List<Post>>
+        get() = _postsList
 
-    val selectedPost by lazy { MutableLiveData<Post>() }
 
-    val selectedPostUser by lazy { MutableLiveData<User>() }
+    private val _selectedPost by lazy { MutableLiveData<Post>() }
+    val selectedPost : LiveData<Post>
+        get() = _selectedPost
 
-    val selectedPostComments by lazy { MutableLiveData<List<Comment>>() }
+
+    private val _selectedPostUser by lazy { MutableLiveData<User>() }
+    val selectedPostUser :LiveData<User>
+        get() = _selectedPostUser
+
+
+    private val _selectedPostComments by lazy { MutableLiveData<List<Comment>>() }
+    val selectedPostComments : LiveData<List<Comment>>
+        get() = _selectedPostComments
+
 
     init {
         launch {
-            postsList.value =
+            _postsList.value =
                 try {
-                    withContext(Dispatchers.IO) { PostsRepository().getPosts()}
+                    withContext(Dispatchers.IO) { PostsRepository().getPosts() }
 
                 } catch (e: Throwable) {
                     Timber.e(e)
@@ -36,14 +49,14 @@ class MainViewModel : ViewModel() {
     }
 
     fun updateSelectedPost(post: Post) {
-        selectedPost.value = post
+        _selectedPost.value = post
         updateSelectedUser(post)
         updateSelectedPostComments(post)
     }
 
     private fun updateSelectedPostComments(post: Post) {
         launch {
-            selectedPostComments.value = withContext(Dispatchers.IO) {
+            _selectedPostComments.value = withContext(Dispatchers.IO) {
                 PostsRepository().getCommentsByPostId(post.id)
             }
         }
@@ -51,9 +64,13 @@ class MainViewModel : ViewModel() {
 
     private fun updateSelectedUser(post: Post) {
         launch {
-            selectedPostUser.value = withContext(Dispatchers.IO) {
+            _selectedPostUser.value = withContext(Dispatchers.IO) {
                 PostsRepository().getUser(post.userId)
             }
         }
+    }
+
+    fun loadFirstPost() {
+        _selectedPost.value = this.postsList.value?.first()
     }
 }

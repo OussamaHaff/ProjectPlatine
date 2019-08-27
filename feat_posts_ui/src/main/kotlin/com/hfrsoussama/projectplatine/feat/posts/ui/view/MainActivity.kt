@@ -16,7 +16,7 @@ class MainActivity : BaseActivity() {
     private val viewModel: MainViewModel by viewModels()
 
     private val postsListObserver by lazy {
-        Observer<List<Post>> { updateSelectedPostForTablet(it) }
+        Observer<List<Post>> { updateSelectedPostForTablet() }
     }
 
     private val selectedPostObserver by lazy {
@@ -30,11 +30,10 @@ class MainActivity : BaseActivity() {
      * After loading the list of posts, the value of [MainViewModel.selectedPost] is set only if the app is used on a
      * tablet in order to update the post details fragment.
      *
-     * @param postsList The list of new loaded posts
      */
-    private fun updateSelectedPostForTablet(postsList: List<Post>) {
+    private fun updateSelectedPostForTablet() {
         if (isTablet()) {
-            viewModel.selectedPost.value = postsList.first()
+            viewModel.loadFirstPost()
         }
     }
 
