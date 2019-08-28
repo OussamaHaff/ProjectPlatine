@@ -1,6 +1,6 @@
-package com.hfrsoussama.projectplatine.feat.posts.core.model
+package com.hfrsoussama.projectplatine.feat.posts.core.model.remote
 
-data class Post(
+data class PostWs(
     val userId: Long,
     val id: Long,
     val title: String,

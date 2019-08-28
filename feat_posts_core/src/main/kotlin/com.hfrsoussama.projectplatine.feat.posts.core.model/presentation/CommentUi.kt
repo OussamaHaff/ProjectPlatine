@@ -1,6 +1,6 @@
-package com.hfrsoussama.projectplatine.feat.posts.core.model
+package com.hfrsoussama.projectplatine.feat.posts.core.model.presentation
 
-data class Comment(
+data class CommentUi(
     val postId: Long,
     val id: Long,
     val name: String,

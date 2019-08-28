@@ -1,7 +1,7 @@
 package com.hfrsoussama.projectplatine.feat.posts.core.model.extensions
 
-import com.hfrsoussama.projectplatine.feat.posts.core.model.Comment
-import com.hfrsoussama.projectplatine.feat.posts.core.model.User
+import com.hfrsoussama.projectplatine.feat.posts.core.model.presentation.CommentUi
+import com.hfrsoussama.projectplatine.feat.posts.core.model.presentation.UserUi
 import okhttp3.HttpUrl
 
 /**
@@ -10,13 +10,13 @@ import okhttp3.HttpUrl
  *
  * @return an HTTP URL to download the avatar image from adorable.io
  */
-fun User.generateAvatarHttpUrl(): HttpUrl {
+fun UserUi.generateAvatarHttpUrl(): HttpUrl {
     return HttpUrl.Builder()
         .scheme("https")
         .host("api.adorable.io")
         .addPathSegment("avatars")
         .addPathSegment("100")
-        .addPathSegment(username.take(2).plus(name.takeLast(2)).plus(".png"))
+        .addPathSegment(username?.take(2).plus(name?.takeLast(2)).plus(".png"))
         .build()
 }
 
@@ -26,7 +26,7 @@ fun User.generateAvatarHttpUrl(): HttpUrl {
  *
  * @return an HTTP URL to download the avatar image from adorable.io
  */
-fun Comment.generateAvatarHttpUrl(): HttpUrl {
+fun CommentUi.generateAvatarHttpUrl(): HttpUrl {
     return HttpUrl.Builder()
         .scheme("https")
         .host("api.adorable.io")

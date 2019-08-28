@@ -1,8 +1,8 @@
 package com.hfrsoussama.projectplatine.feat.posts.core.network
 
-import com.hfrsoussama.projectplatine.feat.posts.core.model.Comment
-import com.hfrsoussama.projectplatine.feat.posts.core.model.Post
-import com.hfrsoussama.projectplatine.feat.posts.core.model.User
+import com.hfrsoussama.projectplatine.feat.posts.core.model.remote.CommentWs
+import com.hfrsoussama.projectplatine.feat.posts.core.model.remote.PostWs
+import com.hfrsoussama.projectplatine.feat.posts.core.model.remote.UserWs
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -10,11 +10,11 @@ import retrofit2.http.Query
 interface WebService {
 
     @GET("/posts")
-    suspend fun getPosts() : List<Post>
+    suspend fun getPosts() : List<PostWs>
 
     @GET("/users/{userId}")
-    suspend fun getUser(@Path("userId") userId: Long): User
+    suspend fun getUser(@Path("userId") userId: Long): UserWs
 
     @GET("/comments")
-    suspend fun getCommentsByPostId(@Query("postId") postId: Long) : List<Comment>
+    suspend fun getCommentsByPostId(@Query("postId") postId: Long) : List<CommentWs>
 }

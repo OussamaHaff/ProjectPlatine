@@ -4,9 +4,9 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.fragment.app.commitNow
 import androidx.lifecycle.Observer
+import com.hfrsoussama.projectplatine.feat.posts.core.model.presentation.PostUi
 import com.hfrsoussama.projectplatine.feat.posts.ui.R
 import com.hfrsoussama.projectplatine.feat.posts.core.viewmodel.MainViewModel
-import com.hfrsoussama.projectplatine.feat.posts.core.model.Post
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
@@ -16,11 +16,11 @@ class MainActivity : BaseActivity() {
     private val viewModel: MainViewModel by viewModels()
 
     private val postsListObserver by lazy {
-        Observer<List<Post>> { updateSelectedPostForTablet() }
+        Observer<List<PostUi>> { updateSelectedPostForTablet() }
     }
 
     private val selectedPostObserver by lazy {
-        Observer<Post> { attachDetailsFragmentIfNeeded() }
+        Observer<PostUi> { attachDetailsFragmentIfNeeded() }
     }
 
     /**
@@ -40,7 +40,7 @@ class MainActivity : BaseActivity() {
 
     private fun attachDetailsFragmentIfNeeded() {
         if (isTablet()) {
-            // Do nothing, the Post Details Fragment should be already attached
+            // Do nothing, the com.hfrsoussama.projectplatine.feat.posts.core.model.presentation.PostUi Details Fragment should be already attached
         } else {
             // Attach the fragment
             supportFragmentManager.commitNow {

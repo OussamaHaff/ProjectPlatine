@@ -10,9 +10,10 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.hfrsoussama.projectplatine.feat.posts.core.model.presentation.PostUi
 import com.hfrsoussama.projectplatine.feat.posts.core.viewmodel.MainViewModel
 import com.hfrsoussama.projectplatine.feat.posts.ui.R
-import com.hfrsoussama.projectplatine.feat.posts.core.model.Post
+import com.hfrsoussama.projectplatine.feat.posts.core.model.remote.PostWs
 import kotlinx.android.synthetic.main.fragment_posts.*
 
 class PostsFragment : Fragment(), PostsListAdapter.OnItemClickListener {
@@ -26,10 +27,10 @@ class PostsFragment : Fragment(), PostsListAdapter.OnItemClickListener {
     private val sharedViewModel: MainViewModel by activityViewModels()
 
     private val postListObserver by lazy {
-        Observer<List<Post>> { posts -> renderListOfPosts(posts) }
+        Observer<List<PostUi>> { posts -> renderListOfPosts(posts) }
     }
 
-    private fun renderListOfPosts(posts: List<Post>) {
+    private fun renderListOfPosts(posts: List<PostUi>) {
         rv_posts_list?.apply {
             adapter = PostsListAdapter(posts, this@PostsFragment)
 
@@ -60,7 +61,7 @@ class PostsFragment : Fragment(), PostsListAdapter.OnItemClickListener {
         sharedViewModel.postsList.observe(this, postListObserver)
     }
 
-    override fun onItemClick(post: Post) {
+    override fun onItemClick(post: PostUi) {
         sharedViewModel.updateSelectedPost(post)
     }
 

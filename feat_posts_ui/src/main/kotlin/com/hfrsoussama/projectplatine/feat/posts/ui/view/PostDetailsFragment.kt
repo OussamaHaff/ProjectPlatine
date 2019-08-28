@@ -11,12 +11,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
 import coil.transform.CircleCropTransformation
-import com.hfrsoussama.projectplatine.feat.posts.ui.R
-import com.hfrsoussama.projectplatine.feat.posts.core.viewmodel.MainViewModel
 import com.hfrsoussama.projectplatine.feat.posts.core.model.extensions.generateAvatarHttpUrl
-import com.hfrsoussama.projectplatine.feat.posts.core.model.Comment
-import com.hfrsoussama.projectplatine.feat.posts.core.model.Post
-import com.hfrsoussama.projectplatine.feat.posts.core.model.User
+import com.hfrsoussama.projectplatine.feat.posts.core.model.presentation.CommentUi
+import com.hfrsoussama.projectplatine.feat.posts.core.model.presentation.PostUi
+import com.hfrsoussama.projectplatine.feat.posts.core.model.presentation.UserUi
+import com.hfrsoussama.projectplatine.feat.posts.core.viewmodel.MainViewModel
+import com.hfrsoussama.projectplatine.feat.posts.ui.R
 import kotlinx.android.synthetic.main.fragment_post_details.*
 
 class PostDetailsFragment : Fragment() {
@@ -28,13 +28,13 @@ class PostDetailsFragment : Fragment() {
 
     private val sharedViewModel: MainViewModel by activityViewModels()
 
-    private val selectedPostObserver by lazy { Observer<Post> { onPostSelected(it) } }
+    private val selectedPostObserver by lazy { Observer<PostUi> { onPostSelected(it) } }
 
-    private val selectedPostUserObserver by lazy { Observer<User> { onUserReceived(it) } }
+    private val selectedPostUserObserver by lazy { Observer<UserUi> { onUserReceived(it) } }
 
-    private val selectedPostCommentsObserver by lazy { Observer<List<Comment>> { onCommentsReceived(it) } }
+    private val selectedPostCommentsObserver by lazy { Observer<List<CommentUi>> { onCommentsReceived(it) } }
 
-    private fun onCommentsReceived(commentsList: List<Comment>) {
+    private fun onCommentsReceived(commentsList: List<CommentUi>) {
         rv_comments_list?.apply {
 
             adapter = CommentsListAdapter(commentsList)
@@ -50,7 +50,7 @@ class PostDetailsFragment : Fragment() {
         }
     }
 
-    private fun onUserReceived(user: User) {
+    private fun onUserReceived(user: UserUi) {
         tv_post_author_name.text = user.name
         iv_author_avatar.load(user.generateAvatarHttpUrl()) {
             crossfade(true)
@@ -59,11 +59,11 @@ class PostDetailsFragment : Fragment() {
         }
     }
 
-    private fun onPostSelected(post: Post) {
+    private fun onPostSelected(post: PostUi) {
         renderUiForPost(post)
     }
 
-    private fun renderUiForPost(post: Post) {
+    private fun renderUiForPost(post: PostUi) {
         tv_post_title.text = post.title
         tv_post_body.text = post.body
         tv_post_author_name.text = post.userId.toString()
