@@ -1,7 +1,17 @@
 package com.hfrsoussama.projectplatine.feat.posts.core.model.extensions
 
-import com.hfrsoussama.projectplatine.feat.posts.core.model.presentation.*
-import com.hfrsoussama.projectplatine.feat.posts.core.model.remote.*
+import com.hfrsoussama.projectplatine.feat.posts.core.model.presentation.AddressUi
+import com.hfrsoussama.projectplatine.feat.posts.core.model.presentation.CompanyUi
+import com.hfrsoussama.projectplatine.feat.posts.core.model.presentation.GeoLocalisationUi
+import com.hfrsoussama.projectplatine.feat.posts.core.model.presentation.PostUi
+import com.hfrsoussama.projectplatine.feat.posts.core.model.presentation.UserUi
+import com.hfrsoussama.projectplatine.feat.posts.core.model.presentation.CommentUi
+import com.hfrsoussama.projectplatine.feat.posts.core.model.remote.AddressWs
+import com.hfrsoussama.projectplatine.feat.posts.core.model.remote.GeoLocalisationWs
+import com.hfrsoussama.projectplatine.feat.posts.core.model.remote.UserWs
+import com.hfrsoussama.projectplatine.feat.posts.core.model.remote.PostWs
+import com.hfrsoussama.projectplatine.feat.posts.core.model.remote.CompanyWs
+import com.hfrsoussama.projectplatine.feat.posts.core.model.remote.CommentWs
 
 
 fun AddressWs.toUiModel() = AddressUi(
