@@ -8,9 +8,9 @@ import androidx.annotation.FloatRange
 
 internal class CustomOutlineProvider(
     private val cornerRadius: Float = 0f,
-    private var scaleX: Float = 1f,
-    private var scaleY: Float = 1f,
-    private var yShift: Int = 0
+    private val scaleX: Float = 1f,
+    private val scaleY: Float = 1f,
+    private val yShift: Int = 0
 ) : ViewOutlineProvider() {
 
     private val rect: Rect = Rect()
