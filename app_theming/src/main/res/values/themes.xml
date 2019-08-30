@@ -11,6 +11,7 @@
         <item name="colorPrimary">@color/color_primary</item>
         <item name="colorPrimaryVariant">@color/color_primary_variant</item>
         <item name="colorPrimaryLight">@color/color_primary_light</item>
+        <item name="colorPrimaryMosaique">@color/color_primary_mosaique</item>
 
         <item name="colorSecondary">@color/color_secondary</item>
         <item name="colorSecondaryVariant">@color/color_secondary_variant</item>

@@ -2,4 +2,5 @@
 <resources>
     <attr name="colorPrimaryLight" format="color"/>
     <attr name="colorSecondaryLight" format="color"/>
+    <attr name="colorPrimaryMosaique" format="color" />
 </resources>

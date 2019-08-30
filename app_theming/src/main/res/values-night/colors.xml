@@ -8,6 +8,7 @@
     <color name="color_primary">#bb86fc</color>
     <color name="color_primary_variant">#4b01d0</color>
     <color name="color_primary_light">#AC7FE4</color>
+    <color name="color_primary_mosaique">#7F7399</color>
 
     <color name="color_secondary">#03dac6</color>
     <color name="color_secondary_variant">#018786</color>
