@@ -43,7 +43,7 @@
                 android:visibility="gone">
             <CustomAttribute
                     app:attributeName="cardBackgroundColor"
-                    app:customColorValue="?colorError" />
+                    app:customColorValue="?colorPrimaryMosaique" />
 
         </Constraint>
 
