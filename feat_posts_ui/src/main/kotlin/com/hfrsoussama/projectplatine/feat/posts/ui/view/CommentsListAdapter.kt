@@ -29,11 +29,11 @@ class CommentsListAdapter(
 
     class CommentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bindToComment(commentWs: CommentUi) {
+        fun bindToComment(commentUi: CommentUi) {
             itemView.apply {
-                tv_comment_author_name.text = commentWs.name
-                tv_comment_body.text = commentWs.body
-                iv_comment_author_avatar.load(commentWs.generateAvatarHttpUrl()) {
+                tv_comment_author_name.text = commentUi.name
+                tv_comment_body.text = commentUi.body
+                iv_comment_author_avatar.load(commentUi.generateAvatarHttpUrl()) {
                     transformations(CircleCropTransformation())
                 }
             }

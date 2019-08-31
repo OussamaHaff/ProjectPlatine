@@ -40,7 +40,8 @@ class MainActivity : BaseActivity() {
 
     private fun attachDetailsFragmentIfNeeded() {
         if (isTablet()) {
-            // Do nothing, the com.hfrsoussama.projectplatine.feat.posts.core.model.presentation.PostUi Details Fragment should be already attached
+            // Do nothing, the com.hfrsoussama.projectplatine.feat.posts.core.model.presentation.PostUi
+            // Details Fragment should be already attached
         } else {
             // Attach the fragment
             supportFragmentManager.commitNow {

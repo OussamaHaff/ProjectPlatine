@@ -8,7 +8,6 @@ class CommentsRecyclerViewItemDecoration(
     private val spaceBetweenItems: Int
 ): RecyclerView.ItemDecoration() {
 
-
     override fun getItemOffsets(
         outRect: Rect,
         view: View,

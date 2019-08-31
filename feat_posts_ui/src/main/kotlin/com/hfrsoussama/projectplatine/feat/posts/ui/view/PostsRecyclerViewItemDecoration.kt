@@ -15,6 +15,5 @@ class PostsRecyclerViewItemDecoration(
             top = itemSpacing
             bottom = itemSpacing
         }
-
     }
 }
