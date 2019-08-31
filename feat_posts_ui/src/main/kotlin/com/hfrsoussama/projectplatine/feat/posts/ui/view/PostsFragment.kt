@@ -1,13 +1,10 @@
 package com.hfrsoussama.projectplatine.feat.posts.ui.view
 
-import android.content.Context
-import android.graphics.Shader
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -60,16 +57,7 @@ class PostsFragment : Fragment(), PostsListAdapter.OnItemClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        context?.let { applyRepeatedBackground(it) }
-
         sharedViewModel.postsList.observe(this, postListObserver)
-    }
-
-    private fun applyRepeatedBackground(context: Context) {
-        val drawable = ContextCompat.getDrawable(context, R.drawable.ic_leaf_pattern)
-        drawable?.let {
-            posts_screen_background.background = TileVectorDrawable(drawable, Shader.TileMode.REPEAT)
-        }
     }
 
     override fun onItemClick(post: PostUi) {
