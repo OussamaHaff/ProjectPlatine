@@ -57,7 +57,7 @@ class PostsFragment : Fragment(), PostsListAdapter.OnItemClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        sharedViewModel.postsList.observe(this, postListObserver)
+        sharedViewModel.postsList.observe(viewLifecycleOwner, postListObserver)
     }
 
     override fun onItemClick(post: PostUi) {

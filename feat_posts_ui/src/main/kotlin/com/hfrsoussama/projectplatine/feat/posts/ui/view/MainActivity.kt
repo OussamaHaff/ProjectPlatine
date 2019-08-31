@@ -44,13 +44,14 @@ class MainActivity : BaseActivity() {
             // Details Fragment should be already attached
         } else {
             // Attach the fragment
-            supportFragmentManager.commitNow {
-                replace(
+            supportFragmentManager.beginTransaction()
+                .replace(
                     main_fragment_container.id,
                     PostDetailsFragment.newInstance(),
                     PostDetailsFragment.TAG
                 )
-            }
+                .addToBackStack(PostDetailsFragment.TAG)
+                .commit()
         }
     }
 
