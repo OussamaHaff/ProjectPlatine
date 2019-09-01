@@ -1,5 +1,6 @@
 package com.hfrsoussama.projectplatine.feat.posts.ui.view
 
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,8 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.vectordrawable.graphics.drawable.Animatable2Compat
+import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
 import com.hfrsoussama.projectplatine.feat.posts.core.model.presentation.PostUi
 import com.hfrsoussama.projectplatine.feat.posts.core.viewmodel.MainViewModel
 import com.hfrsoussama.projectplatine.feat.posts.ui.R
@@ -30,7 +33,9 @@ class PostsFragment : Fragment(), PostsListAdapter.OnItemClickListener {
     }
 
     private fun renderListOfPosts(posts: List<PostUi>) {
+        iv_loading.visibility = View.GONE
         rv_posts_list?.apply {
+            visibility = View.VISIBLE
             adapter = PostsListAdapter(posts, this@PostsFragment)
 
             layoutManager = LinearLayoutManager(context).apply {
@@ -57,7 +62,31 @@ class PostsFragment : Fragment(), PostsListAdapter.OnItemClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        if (sharedViewModel.postsList.value.isNullOrEmpty()) {
+            showLoadingIfNecessary()
+        }
         sharedViewModel.postsList.observe(viewLifecycleOwner, postListObserver)
+    }
+
+    private fun showLoadingIfNecessary() {
+        rv_posts_list.visibility = View.GONE
+        context?.let { context ->
+
+            val animatedVectorDrawable = AnimatedVectorDrawableCompat.create(context, R.drawable.avd_leaf_loading_anim)
+
+            animatedVectorDrawable?.let {
+                it.registerAnimationCallback(object : Animatable2Compat.AnimationCallback() {
+                    override fun onAnimationEnd(drawable: Drawable?) {
+                        // restart the animation when it ends to have a loop effect
+                        animatedVectorDrawable.start()
+                    }
+                })
+                iv_loading.visibility = View.VISIBLE
+                iv_loading.setImageDrawable(animatedVectorDrawable)
+                it.start()
+            }
+        }
+
     }
 
     override fun onItemClick(post: PostUi) {

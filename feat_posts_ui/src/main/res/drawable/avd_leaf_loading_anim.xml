@@ -1,0 +1,47 @@
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:aapt="http://schemas.android.com/aapt">
+    <aapt:attr name="android:drawable">
+        <vector
+                android:name="vector"
+                android:width="134dp"
+                android:height="134dp"
+                android:tint="?colorPrimaryLight"
+                android:viewportWidth="134"
+                android:viewportHeight="134">
+            <path
+                    android:name="path"
+                    android:pathData="M 25.885 18.22 L 25.885 80.773 C 25.885 87.218 31.119 92.452 37.566 92.452 L 56.39 92.452 L 56.39 29.928 C 56.39 23.466 51.144 18.22 44.684 18.22 L 25.885 18.22 Z M 75.15 47.83 L 75.15 110.382 C 75.15 116.828 80.384 122.062 86.829 122.062 L 105.655 122.062 L 105.655 59.538 C 105.655 53.076 100.409 47.83 93.949 47.83 L 75.15 47.83 Z"
+                    android:strokeWidth="1"
+                    android:strokeColor="#9c4dcc" />
+        </vector>
+    </aapt:attr>
+    <target android:name="path">
+        <aapt:attr name="android:animation">
+            <set>
+                <objectAnimator
+                        android:duration="750"
+                        android:interpolator="@android:interpolator/fast_out_slow_in"
+                        android:propertyName="pathData"
+                        android:valueFrom="M 25.885 18.22 L 25.885 80.773 C 25.885 87.218 31.119 92.452 37.566 92.452 L 56.39 92.452 L 56.39 29.928 C 56.39 23.466 51.144 18.22 44.684 18.22 L 25.885 18.22 Z M 75.15 47.83 L 75.15 110.382 C 75.15 116.828 80.384 122.062 86.829 122.062 L 105.655 122.062 L 105.655 59.538 C 105.655 53.076 100.409 47.83 93.949 47.83 L 75.15 47.83 Z"
+                        android:valueTo="M 40.479 24.346 L 40.479 86.587 C 40.479 93 45.687 98.208 52.101 98.208 L 70.832 98.208 L 70.832 35.994 C 70.832 29.564 65.612 24.346 59.184 24.346 L 40.479 24.346 Z M 55.656 40.583 L 55.656 102.824 C 55.656 109.238 60.864 114.445 67.277 114.445 L 86.009 114.445 L 86.009 52.231 C 86.009 45.802 80.789 40.583 74.361 40.583 L 55.656 40.583 Z"
+                        android:valueType="pathType" />
+                <objectAnimator
+                        android:duration="754"
+                        android:interpolator="@android:interpolator/fast_out_slow_in"
+                        android:propertyName="pathData"
+                        android:startOffset="746"
+                        android:valueFrom="M 55.656 40.583 L 55.656 102.824 C 55.656 109.238 60.864 114.445 67.277 114.445 L 86.009 114.445 L 86.009 52.231 C 86.009 45.802 80.789 40.583 74.361 40.583 L 55.656 40.583 Z M 40.479 24.346 L 40.479 86.587 C 40.479 93 45.687 98.208 52.101 98.208 L 70.832 98.208 L 70.832 35.994 C 70.832 29.564 65.612 24.346 59.184 24.346 L 40.479 24.346 Z"
+                        android:valueTo="M 103.597 51.49 L 41.356 51.49 C 34.943 51.49 29.735 56.698 29.735 63.112 L 29.735 81.843 L 91.949 81.843 C 98.379 81.843 103.597 76.623 103.597 70.195 L 103.597 51.49 Z M 51.49 29.736 L 51.49 91.977 C 51.49 98.391 56.698 103.599 63.112 103.599 L 81.843 103.599 L 81.843 41.384 C 81.843 34.955 76.623 29.736 70.195 29.736 L 51.49 29.736 Z"
+                        android:valueType="pathType" />
+                <objectAnimator
+                        android:duration="1072"
+                        android:interpolator="@android:interpolator/fast_out_slow_in"
+                        android:propertyName="pathData"
+                        android:startOffset="1500"
+                        android:valueFrom="M 103.597 51.49 L 41.356 51.49 C 34.943 51.49 29.735 56.698 29.735 63.112 L 29.735 81.843 L 91.949 81.843 C 98.379 81.843 103.597 76.623 103.597 70.195 L 103.597 51.49 Z M 51.49 29.736 L 51.49 91.977 C 51.49 98.391 56.698 103.599 63.112 103.599 L 81.843 103.599 L 81.843 41.384 C 81.843 34.955 76.623 29.736 70.195 29.736 L 51.49 29.736 Z"
+                        android:valueTo="M 25.885 18.22 L 25.885 80.773 C 25.885 87.218 31.119 92.452 37.566 92.452 L 56.39 92.452 L 56.39 29.928 C 56.39 23.466 51.144 18.22 44.684 18.22 L 25.885 18.22 Z M 75.15 47.83 L 75.15 110.382 C 75.15 116.828 80.384 122.062 86.829 122.062 L 105.655 122.062 L 105.655 59.538 C 105.655 53.076 100.409 47.83 93.949 47.83 L 75.15 47.83 Z"
+                        android:valueType="pathType" />
+            </set>
+        </aapt:attr>
+    </target>
+</animated-vector>
