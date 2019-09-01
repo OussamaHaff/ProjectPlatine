@@ -11,6 +11,8 @@
     - Dark Theme ✅
     - Shape Theming ✅️
     - Typography Theming ✅
+- Vector Drawables
+- Animated Vector Drawables
 
 
 
