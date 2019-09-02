@@ -3,7 +3,7 @@ package com.hfrsoussama.projectplatine.feat.posts.core.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.hfrsoussama.projectplatine.feat.posts.core.PostsRepository
+import com.hfrsoussama.projectplatine.feat.posts.core.network.PostsRepository
 import com.hfrsoussama.projectplatine.feat.posts.core.extensions.launch
 import com.hfrsoussama.projectplatine.feat.posts.core.model.extensions.toUiModel
 import com.hfrsoussama.projectplatine.feat.posts.core.model.presentation.CommentUi

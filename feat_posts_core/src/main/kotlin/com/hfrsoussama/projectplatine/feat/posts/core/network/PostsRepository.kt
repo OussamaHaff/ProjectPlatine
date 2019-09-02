@@ -1,6 +1,4 @@
-package com.hfrsoussama.projectplatine.feat.posts.core
-
-import com.hfrsoussama.projectplatine.feat.posts.core.network.RetrofitClient
+package com.hfrsoussama.projectplatine.feat.posts.core.network
 
 class PostsRepository {
 
