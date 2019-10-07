@@ -1,8 +1,6 @@
 package com.hfrsoussama.projectplatine.feat.posts.core.network
 
-class PostsRepository {
-
-    private val client = RetrofitClient.webService
+class PostsRepository(private val client: PostsWebServices) {
 
     suspend fun getPosts() = client.getPosts()
 

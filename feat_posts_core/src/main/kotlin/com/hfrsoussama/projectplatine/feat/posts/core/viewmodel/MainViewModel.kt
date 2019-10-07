@@ -37,6 +37,8 @@ class MainViewModel : ViewModel() {
         get() = _selectedPostComments
 
 
+    private val repository: PostsRepository by inject()
+
     init {
         launch {
             try {

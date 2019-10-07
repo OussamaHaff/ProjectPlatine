@@ -7,7 +7,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-interface WebService {
+interface PostsWebServices {
 
     @GET("/posts")
     suspend fun getPosts() : List<PostWs>
