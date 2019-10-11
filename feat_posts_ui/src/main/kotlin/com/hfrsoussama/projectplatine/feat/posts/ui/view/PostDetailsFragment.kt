@@ -28,11 +28,11 @@ class PostDetailsFragment : Fragment() {
 
     private val sharedViewModel: MainViewModel by activityViewModels()
 
-    private val selectedPostObserver by lazy { Observer<PostUi> { onPostSelected(it) } }
+    private val selectedPostObserver =  Observer<PostUi> { onPostSelected(it) }
 
-    private val selectedPostUserObserver by lazy { Observer<UserUi> { onUserReceived(it) } }
+    private val selectedPostUserObserver =  Observer<UserUi> { onUserReceived(it) }
 
-    private val selectedPostCommentsObserver by lazy { Observer<List<CommentUi>> { onCommentsReceived(it) } }
+    private val selectedPostCommentsObserver =  Observer<List<CommentUi>> { onCommentsReceived(it) }
 
     private fun onCommentsReceived(commentsList: List<CommentUi>) {
         rv_comments_list?.apply {

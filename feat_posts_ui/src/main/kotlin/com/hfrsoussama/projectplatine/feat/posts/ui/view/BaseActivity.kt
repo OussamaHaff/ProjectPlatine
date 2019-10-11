@@ -9,8 +9,6 @@ import com.hfrsoussama.projectplatine.feat.posts.ui.R
 
 abstract class BaseActivity : AppCompatActivity() {
 
-    abstract fun isTablet(): Boolean
-
     override fun onContentChanged() {
         super.onContentChanged()
 

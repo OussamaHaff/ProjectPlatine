@@ -1,11 +1,14 @@
 package com.hfrsoussama.projectplatine.feat.posts.core.network
 
-class PostsRepository(private val client: PostsWebServices) {
+import com.hfrsoussama.projectplatine.feat.posts.core.model.presentation.CommentUi
+import com.hfrsoussama.projectplatine.feat.posts.core.model.presentation.PostUi
+import com.hfrsoussama.projectplatine.feat.posts.core.model.presentation.UserUi
 
-    suspend fun getPosts() = client.getPosts()
+interface PostsRepository {
 
-    suspend fun getUser(userId: Long) = client.getUser(userId)
+    suspend fun getPosts() : List<PostUi>
 
-    suspend fun getCommentsByPostId(postId: Long) = client.getCommentsByPostId(postId)
+    suspend fun getUser(userId: Long) : UserUi
 
+    suspend fun getCommentsByPostId(postId: Long): List<CommentUi>
 }
