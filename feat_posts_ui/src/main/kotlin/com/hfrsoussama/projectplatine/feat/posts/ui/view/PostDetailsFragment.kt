@@ -17,6 +17,7 @@ import com.hfrsoussama.projectplatine.feat.posts.core.model.presentation.PostUi
 import com.hfrsoussama.projectplatine.feat.posts.core.model.presentation.UserUi
 import com.hfrsoussama.projectplatine.feat.posts.core.viewmodel.MainViewModel
 import com.hfrsoussama.projectplatine.feat.posts.ui.R
+import com.hfrsoussama.projectplatine.feat.posts.ui.decoration.CommentsRecyclerViewItemDecoration
 import kotlinx.android.synthetic.main.fragment_post_details.*
 
 class PostDetailsFragment : Fragment() {

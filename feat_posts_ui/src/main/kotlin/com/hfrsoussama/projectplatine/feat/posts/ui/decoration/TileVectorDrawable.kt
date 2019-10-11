@@ -1,4 +1,4 @@
-package com.hfrsoussama.projectplatine.feat.posts.ui.view
+package com.hfrsoussama.projectplatine.feat.posts.ui.decoration
 
 import android.graphics.Bitmap
 import android.graphics.BitmapShader

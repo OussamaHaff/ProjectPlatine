@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer
 import com.hfrsoussama.projectplatine.feat.posts.core.model.presentation.PostUi
 import com.hfrsoussama.projectplatine.feat.posts.core.viewmodel.MainViewModel
 import com.hfrsoussama.projectplatine.feat.posts.ui.R
+import com.hfrsoussama.projectplatine.feat.posts.ui.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

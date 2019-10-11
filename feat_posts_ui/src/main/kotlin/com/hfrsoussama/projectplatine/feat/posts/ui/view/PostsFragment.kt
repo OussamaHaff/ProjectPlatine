@@ -15,6 +15,7 @@ import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
 import com.hfrsoussama.projectplatine.feat.posts.core.model.presentation.PostUi
 import com.hfrsoussama.projectplatine.feat.posts.core.viewmodel.MainViewModel
 import com.hfrsoussama.projectplatine.feat.posts.ui.R
+import com.hfrsoussama.projectplatine.feat.posts.ui.decoration.PostsRecyclerViewItemDecoration
 import kotlinx.android.synthetic.main.fragment_posts.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
