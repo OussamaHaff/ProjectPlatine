@@ -8,7 +8,6 @@ import timber.log.Timber
 
 class ProjectPlatineApp : Application() {
 
-
     override fun onCreate() {
         super.onCreate()
 
@@ -21,11 +20,5 @@ class ProjectPlatineApp : Application() {
             modules(listOf(PostsNetworkModule))
         }
 
-
-
-
     }
-
-
-
 }
