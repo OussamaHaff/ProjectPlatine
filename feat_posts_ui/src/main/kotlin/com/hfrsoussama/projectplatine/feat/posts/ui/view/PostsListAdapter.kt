@@ -38,9 +38,6 @@ class PostsListAdapter(
                 tv_post_body.text = post.body
                 tv_user_name.text = post.userId.toString()
 
-                val cornerRadius = (this as MaterialCardView).radius
-                val customOutlineProvider = CustomOutlineProvider(cornerRadius = cornerRadius)
-                outlineProvider = customOutlineProvider
                 elevation = ITEM_ELEVATION * itemView.context.resources.displayMetrics.density
 
                 setOnClickListener { listener.onItemClick(post) }
