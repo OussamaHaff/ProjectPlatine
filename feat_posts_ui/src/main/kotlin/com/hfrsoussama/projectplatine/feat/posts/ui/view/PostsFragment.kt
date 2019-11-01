@@ -17,7 +17,7 @@ import com.hfrsoussama.projectplatine.feat.posts.core.viewmodel.MainViewModel
 import com.hfrsoussama.projectplatine.feat.posts.ui.R
 import com.hfrsoussama.projectplatine.feat.posts.ui.decoration.PostsRecyclerViewItemDecoration
 import kotlinx.android.synthetic.main.fragment_posts.*
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class PostsFragment : Fragment(), PostsListAdapter.OnItemClickListener {
 
@@ -26,7 +26,7 @@ class PostsFragment : Fragment(), PostsListAdapter.OnItemClickListener {
         fun newInstance() = PostsFragment()
     }
 
-    private val sharedViewModel: MainViewModel by viewModel()
+    private val sharedViewModel: MainViewModel by sharedViewModel()
 
     private val postListObserver = Observer<List<PostUi>> { renderListOfPosts(it) }
 

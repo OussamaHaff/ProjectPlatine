@@ -34,7 +34,7 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        viewModel.selectedPost.observe(this, selectedPostObserver)
+        viewModel.selectedPost.observe(this@MainActivity, selectedPostObserver)
 
         supportFragmentManager.commitNow {
             replace(

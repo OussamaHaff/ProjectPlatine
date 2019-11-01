@@ -10,7 +10,7 @@ import org.koin.dsl.module
 
 val PostsNetworkModule = module {
 
-    single { MockInterceptor(androidApplication()) as Interceptor}
+    single { MockInterceptor(androidApplication().assets) as Interceptor}
     single { provideOkHttpClient(get()) }
     single { provideRetrofit(get()) }
     single { providePostsService(get()) }

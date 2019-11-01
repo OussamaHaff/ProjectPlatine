@@ -7,13 +7,13 @@ import com.hfrsoussama.projectplatine.feat.posts.core.extensions.launch
 import com.hfrsoussama.projectplatine.feat.posts.core.model.presentation.CommentUi
 import com.hfrsoussama.projectplatine.feat.posts.core.model.presentation.PostUi
 import com.hfrsoussama.projectplatine.feat.posts.core.model.presentation.UserUi
-import com.hfrsoussama.projectplatine.feat.posts.core.network.PostsRepositoryImpl
+import com.hfrsoussama.projectplatine.feat.posts.core.network.PostsRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 import timber.log.Timber
 
-class MainViewModel(private val repository: PostsRepositoryImpl) : ViewModel() {
+class MainViewModel(private val repository: PostsRepository) : ViewModel() {
 
     private val _postsList = MutableLiveData<List<PostUi>>()
     val postsList: LiveData<List<PostUi>>

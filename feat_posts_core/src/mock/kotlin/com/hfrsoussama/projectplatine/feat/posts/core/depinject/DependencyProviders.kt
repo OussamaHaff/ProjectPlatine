@@ -1,6 +1,7 @@
 package com.hfrsoussama.projectplatine.feat.posts.core.depinject
 
 import com.google.gson.GsonBuilder
+import com.hfrsoussama.projectplatine.feat.posts.core.network.PostsRepository
 import com.hfrsoussama.projectplatine.feat.posts.core.network.PostsRepositoryImpl
 import com.hfrsoussama.projectplatine.feat.posts.core.network.PostsWebServices
 import okhttp3.Interceptor
@@ -22,4 +23,5 @@ fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
 fun providePostsService(retrofit: Retrofit): PostsWebServices =
     retrofit.create(PostsWebServices::class.java)
 
-fun providePostsRepository(postsWebServices: PostsWebServices) = PostsRepositoryImpl(postsWebServices)
+fun providePostsRepository(postsWebServices: PostsWebServices): PostsRepository =
+    PostsRepositoryImpl(postsWebServices)
