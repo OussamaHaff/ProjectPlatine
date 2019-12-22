@@ -34,17 +34,22 @@ class MainViewModel(private val repository: PostsRepository) : ViewModel() {
     val selectedPostComments: LiveData<List<CommentUi>>
         get() = _selectedPostComments
 
+    private val _errorState = MutableLiveData<Throwable>()
+    val errorState : LiveData<Throwable>
+        get() = _errorState
+
 
     init {
         launch {
             try {
                 _postsList.value = withContext(Dispatchers.IO) {
-                    delay(timeMillis = 6_000)
+                    delay(timeMillis = 2_000)
                     repository.getPosts()
                 }
 
             } catch (e: Throwable) {
                 Timber.e(e)
+                _errorState.value = e
             }
 
         }

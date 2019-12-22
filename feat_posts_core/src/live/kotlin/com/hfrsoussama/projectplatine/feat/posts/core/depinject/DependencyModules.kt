@@ -13,7 +13,8 @@ val PostsNetworkModule = module {
     single { provideOkHttpClient(get()) }
     single { provideRetrofit(get()) }
     single { providePostsService(get()) }
-    single { providePostsRepository(get()) }
+    single { provideDatabase(get()).postDao() }
+    factory { providePostsRepository(postsWebServices = get(), postDao = get()) }
     viewModel { MainViewModel(get()) }
 
 }

@@ -13,8 +13,9 @@ val PostsNetworkModule = module {
     single { MockInterceptor(androidApplication().assets) as Interceptor}
     single { provideOkHttpClient(get()) }
     single { provideRetrofit(get()) }
+    single { provideDatabase(context = get()).postDao() }
     single { providePostsService(get()) }
-    single { providePostsRepository(get()) }
+    factory { providePostsRepository(postsWebServices = get(), postDao = get()) }
     viewModel { MainViewModel(get()) }
 
 }

@@ -12,6 +12,7 @@ import com.hfrsoussama.projectplatine.feat.posts.core.model.remote.UserWs
 import com.hfrsoussama.projectplatine.feat.posts.core.model.remote.PostWs
 import com.hfrsoussama.projectplatine.feat.posts.core.model.remote.CompanyWs
 import com.hfrsoussama.projectplatine.feat.posts.core.model.remote.CommentWs
+import com.hfrsoussama.projectplatine.shared.database.entities.PostDb
 
 
 fun AddressWs.toUiModel() = AddressUi(
@@ -56,3 +57,11 @@ fun PostWs.toUiModel()
 fun CommentWs.toUiModel()
         = CommentUi(postId, id, name, email, body)
 
+fun PostWs.toDbModel() = PostDb(id, userId, title, body)
+
+fun toUiModel(postDb: PostDb) = PostUi(
+    id = postDb.id,
+    userId = postDb.userId,
+    title = postDb.title,
+    body = postDb.body
+)

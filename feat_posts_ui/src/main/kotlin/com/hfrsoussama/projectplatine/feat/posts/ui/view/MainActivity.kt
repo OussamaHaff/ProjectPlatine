@@ -16,6 +16,12 @@ class MainActivity : BaseActivity() {
 
     private val selectedPostObserver = Observer<PostUi> { attachDetailsFragmentIfNeeded() }
 
+    private val errorObserver = Observer<Throwable> { attachErrorFragment() }
+
+    private fun attachErrorFragment() {
+
+    }
+
 
     private fun attachDetailsFragmentIfNeeded() {
         supportFragmentManager.beginTransaction()
@@ -35,6 +41,7 @@ class MainActivity : BaseActivity() {
         setContentView(R.layout.activity_main)
 
         viewModel.selectedPost.observe(this@MainActivity, selectedPostObserver)
+        viewModel.errorState.observe(this@MainActivity, errorObserver)
 
         supportFragmentManager.commitNow {
             replace(
