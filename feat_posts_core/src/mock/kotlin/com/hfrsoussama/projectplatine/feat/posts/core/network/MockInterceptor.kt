@@ -10,6 +10,10 @@ import java.io.InputStreamReader
 
 class MockInterceptor(private val assetManager: AssetManager) : Interceptor {
 
+    private companion object {
+        const val HTTP_SUCCESS_CODE = 200
+    }
+
     override fun intercept(chain: Interceptor.Chain): Response {
         val request = chain.request()
         val uri = request.url().uri().toString()
@@ -22,7 +26,7 @@ class MockInterceptor(private val assetManager: AssetManager) : Interceptor {
 
         return chain.proceed(chain.request())
             .newBuilder()
-            .code(200)
+            .code(HTTP_SUCCESS_CODE)
             .protocol(Protocol.HTTP_2)
             .message(mockResponse)
             .body(

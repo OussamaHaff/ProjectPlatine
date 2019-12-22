@@ -30,4 +30,3 @@ fun provideDatabase(context: Context) = PostsDatabase.getDatabase(context)
 
 fun providePostsRepository(postsWebServices: PostsWebServices, postDao: PostDao): PostsRepository =
     PostsRepositoryImpl(postsWebServices, postDao)
-
