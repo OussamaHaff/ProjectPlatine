@@ -2,7 +2,7 @@ plugins {
     id "com.android.library"
     id "kotlin-android"
     id "kotlin-android-extensions"
-    id "io.gitlab.arturbosch.detekt" version "1.1.1"
+    id "io.gitlab.arturbosch.detekt" version "1.3.0"
 }
 
 
@@ -55,9 +55,13 @@ android {
 }
 
 detekt {
-    toolVersion = "1.0.1"
-    input = files("src/main/kotlin", "src/live/kotlin", "src/mock/kotlin")
-    filters = ".*/resources/.*,.*/build/.*"
+    toolVersion = "1.3.0"
+    input = files(
+            "src/main/kotlin",
+            "src/live/kotlin",
+            "src/mock/kotlin"
+    )
+    parallel = true
     reports {
         xml {
             enabled = true
