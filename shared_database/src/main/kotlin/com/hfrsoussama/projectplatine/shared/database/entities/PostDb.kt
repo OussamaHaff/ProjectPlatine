@@ -6,12 +6,17 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "post")
 data class PostDb(
+
     @PrimaryKey(autoGenerate = false)
-    val id: Long,
-    @ColumnInfo(name = "userId")
-    val userId: Long,
+    @ColumnInfo(name = "post_id")
+    val postId: Long,
+
+    @ColumnInfo(name = "user_writer_id")
+    val userWriterId: Long,
+
     @ColumnInfo(name = "title")
     val title: String,
+
     @ColumnInfo(name = "body")
     val body: String
 )

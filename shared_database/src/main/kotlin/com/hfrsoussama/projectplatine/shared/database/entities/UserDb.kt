@@ -1,25 +1,49 @@
 package com.hfrsoussama.projectplatine.shared.database.entities
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room.*
 
-@Entity(tableName = "user")
+@Entity(
+    tableName = "user",
+    indices = [
+        Index(value = ["email"], unique = true)
+    ]
+)
 data class UserDb(
+
     @PrimaryKey(autoGenerate = false)
-    val id: Long,
+    @ColumnInfo(name = "user_id")
+    val userId: Long,
+
     @ColumnInfo(name = "name")
     val name: String,
+
     @ColumnInfo(name = "username")
     val username: String,
+
     @ColumnInfo(name = "email")
     val email: String,
-    @ColumnInfo(name = "address")
-    val address: String,
+
+    @Embedded(prefix = "address_")
+    val address: AddressDb?,
+
     @ColumnInfo(name = "phone")
-    val phone: String,
+    val phone: String?,
+
     @ColumnInfo(name = "website")
-    val webSite: String,
-    @ColumnInfo(name = "company")
-    val company: String
+    val webSite: String?,
+
+    @Embedded(prefix = "company_")
+    val company: CompanyDb?
+)
+
+data class CompanyDb (
+
+    @ColumnInfo(name = "name")
+    val name: String?,
+
+    @ColumnInfo(name = "catch_phrase")
+    val catchPhrase: String?,
+
+    @ColumnInfo(name = "bullshit")
+    val bs: String?
 )

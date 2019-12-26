@@ -7,13 +7,18 @@ import com.hfrsoussama.projectplatine.feat.posts.core.extensions.launch
 import com.hfrsoussama.projectplatine.feat.posts.core.model.presentation.CommentUi
 import com.hfrsoussama.projectplatine.feat.posts.core.model.presentation.PostUi
 import com.hfrsoussama.projectplatine.feat.posts.core.model.presentation.UserUi
+import com.hfrsoussama.projectplatine.feat.posts.core.network.CommentRepository
+import com.hfrsoussama.projectplatine.feat.posts.core.network.MixedSelectiveCommentRetrievalStrategy
 import com.hfrsoussama.projectplatine.feat.posts.core.network.PostsRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 import timber.log.Timber
 
-class MainViewModel(private val repository: PostsRepository) : ViewModel() {
+class MainViewModel(
+    private val postsRepository: PostsRepository,
+    private val commentsRepository: CommentRepository
+    ) : ViewModel() {
 
     private val _postsList = MutableLiveData<List<PostUi>>()
     val postsList: LiveData<List<PostUi>>
@@ -44,7 +49,7 @@ class MainViewModel(private val repository: PostsRepository) : ViewModel() {
             try {
                 _postsList.value = withContext(Dispatchers.IO) {
                     delay(timeMillis = 2_000)
-                    repository.getPosts()
+                    postsRepository.getPosts()
                 }
 
             } catch (e: Throwable) {
@@ -65,7 +70,8 @@ class MainViewModel(private val repository: PostsRepository) : ViewModel() {
         launch {
             try {
                 _selectedPostComments.value = withContext(Dispatchers.IO) {
-                    repository.getCommentsByPostId(post.id)
+                    val strategy = MixedSelectiveCommentRetrievalStrategy(postId = post.id)
+                    commentsRepository.getCommentsByPostId(strategy)
                 }
             } catch (e: Throwable) {
                 Timber.e(e)
@@ -77,7 +83,7 @@ class MainViewModel(private val repository: PostsRepository) : ViewModel() {
         launch {
             try {
                 _selectedPostUser.value = withContext(Dispatchers.IO) {
-                    repository.getUser(post.userId)
+                    postsRepository.getUser(post.userId)
                 }
 
             } catch (e: Throwable) {

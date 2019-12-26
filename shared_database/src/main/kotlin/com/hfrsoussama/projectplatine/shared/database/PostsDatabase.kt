@@ -4,20 +4,23 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.hfrsoussama.projectplatine.shared.database.dao.CommentDao
 import com.hfrsoussama.projectplatine.shared.database.dao.PostDao
 import com.hfrsoussama.projectplatine.shared.database.dao.UserDao
+import com.hfrsoussama.projectplatine.shared.database.entities.CommentDb
 import com.hfrsoussama.projectplatine.shared.database.entities.PostDb
 import com.hfrsoussama.projectplatine.shared.database.entities.UserDb
 
 @Database(
-    entities = [UserDb::class, PostDb::class],
-    version = 1,
+    entities = [UserDb::class, PostDb::class, CommentDb::class],
+    version = 2,
     exportSchema = false
 )
 abstract class PostsDatabase : RoomDatabase() {
 
     abstract fun userDao(): UserDao
     abstract fun postDao(): PostDao
+    abstract fun commentDao(): CommentDao
 
     companion object {
 

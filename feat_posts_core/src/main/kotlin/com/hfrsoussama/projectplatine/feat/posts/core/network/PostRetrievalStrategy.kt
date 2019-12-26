@@ -5,8 +5,6 @@ import com.hfrsoussama.projectplatine.feat.posts.core.model.extensions.toDbModel
 import com.hfrsoussama.projectplatine.feat.posts.core.model.presentation.PostUi
 import com.hfrsoussama.projectplatine.shared.database.dao.PostDao
 
-interface RepositoryStrategy
-
 interface PostRetrievalStrategy : RepositoryStrategy {
     suspend fun retrievePosts(client: PostsWebServices, postDao: PostDao): List<PostUi>
 }

@@ -1,11 +1,8 @@
 package com.hfrsoussama.projectplatine.shared.database.dao
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.hfrsoussama.projectplatine.shared.database.entities.UserDb
-import kotlinx.coroutines.flow.Flow
+import com.hfrsoussama.projectplatine.shared.database.entities.UserWithPostsListDB
 
 @Dao
 interface UserDao {
@@ -14,11 +11,16 @@ interface UserDao {
     suspend fun insert(userDb: UserDb)
 
     @Query("SELECT * FROM user")
-    fun getAllUsersDb() : Flow<List<UserDb>>
+    suspend fun getAllUsersDb() : List<UserDb>
 
-    @Query("SELECT * FROM user WHERE id = :id")
-    fun getUserDbById(id: Long): Flow<UserDb>
+    @Transaction
+    @Query("SELECT * FROM user")
+    suspend fun getAllUsersWithPosts(): List<UserWithPostsListDB>
+
+    @Query("SELECT * FROM user WHERE user_id = :id")
+    suspend fun getUserDbById(id: Long): UserDb
 
     @Query("DELETE FROM user")
-    fun deleteAllUsersDb()
+    suspend fun deleteAllUsersDb()
+
 }

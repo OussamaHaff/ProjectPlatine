@@ -12,6 +12,7 @@ import com.hfrsoussama.projectplatine.feat.posts.core.model.remote.UserWs
 import com.hfrsoussama.projectplatine.feat.posts.core.model.remote.PostWs
 import com.hfrsoussama.projectplatine.feat.posts.core.model.remote.CompanyWs
 import com.hfrsoussama.projectplatine.feat.posts.core.model.remote.CommentWs
+import com.hfrsoussama.projectplatine.shared.database.entities.CommentDb
 import com.hfrsoussama.projectplatine.shared.database.entities.PostDb
 
 
@@ -51,17 +52,28 @@ fun UserWs.toUiModel() = UserUi(
     company?.toUiModel()
 )
 
-fun PostWs.toUiModel()
-        = PostUi(userId, id, title, body)
 
-fun CommentWs.toUiModel()
-        = CommentUi(postId, id, name, email, body)
+fun CommentWs.toDbModel() = CommentDb(
+    commentId = id,
+    postId = postId,
+    authorName = name,
+    authorEmail = email,
+    body = body
+)
 
 fun PostWs.toDbModel() = PostDb(id, userId, title, body)
 
 fun toUiModel(postDb: PostDb) = PostUi(
-    id = postDb.id,
-    userId = postDb.userId,
+    id = postDb.postId,
+    userId = postDb.userWriterId,
     title = postDb.title,
     body = postDb.body
+)
+
+fun toUiModel(commentDb: CommentDb) = CommentUi(
+    postId = commentDb.postId,
+    id = commentDb.commentId,
+    email = commentDb.authorEmail,
+    name = commentDb.authorName,
+    body = commentDb.body
 )

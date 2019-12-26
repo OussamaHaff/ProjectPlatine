@@ -14,8 +14,10 @@ val PostsNetworkModule = module {
     single { provideOkHttpClient(get()) }
     single { provideRetrofit(get()) }
     single { provideDatabase(context = get()).postDao() }
+    single { provideDatabase(context = get()).commentDao() }
     single { providePostsService(get()) }
     factory { providePostsRepository(postsWebServices = get(), postDao = get()) }
-    viewModel { MainViewModel(get()) }
+    factory { provideCommentsRepository(postsWebServices = get(), commentDao = get()) }
+    viewModel { MainViewModel(postsRepository = get(), commentsRepository = get()) }
 
 }
