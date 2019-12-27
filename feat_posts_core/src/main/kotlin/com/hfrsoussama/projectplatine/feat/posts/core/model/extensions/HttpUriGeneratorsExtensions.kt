@@ -16,7 +16,7 @@ fun UserUi.generateAvatarHttpUrl(): HttpUrl {
         .host("api.adorable.io")
         .addPathSegment("avatars")
         .addPathSegment("100")
-        .addPathSegment(username?.take(2).plus(name?.takeLast(2)).plus(".png"))
+        .addPathSegment(username.take(2).plus(name.takeLast(2)).plus(".png"))
         .build()
 }
 
