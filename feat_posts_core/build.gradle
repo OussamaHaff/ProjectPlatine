@@ -6,6 +6,7 @@ plugins {
 }
 
 apply plugin: 'jacoco'
+apply plugin: "de.mannodermaus.android-junit5"
 
 jacoco {
     toolVersion = '0.8.5'
@@ -14,6 +15,43 @@ jacoco {
 tasks.withType(Test) {
     jacoco.includeNoLocationClasses = true
     jacoco.excludes = ['jdk.internal.*']
+}
+
+task jacocoTestReport(
+        type: JacocoReport,
+        dependsOn: ['testLiveDebugUnitTest', 'createLiveDebugCoverageReport']) {
+
+    def fileFilter = [
+            '**/R.class',
+            '**/R$*.class',
+            '**/BuildConfig.*',
+            '**/Manifest*.*',
+            '**/*Test*.*',
+            'android/**/*.*'
+    ]
+    def kotlinClasses = fileTree(
+            dir: "$project.buildDir/tmp/kotlin-classes/debug",
+            excludes: fileFilter
+    )
+    println("####### $project.buildDir/tmp/kotlin-classes/debug")
+
+    def mainSrc = "$project.projectDir/src/main/kotlin"
+    def liveSrc = "$project.projectDir/src/live/kotlin"
+    println("####### $mainSrc")
+    println("####### $liveSrc")
+
+    classDirectories.setFrom(files([ kotlinClasses ]))
+    sourceDirectories.setFrom(files([ mainSrc, liveSrc ]))
+    executionData.setFrom(fileTree(dir: project.buildDir, includes: [
+            'jacoco/testLiveDebugUnitTest.exec',
+            'outputs/code_coverage/liveDebugAndroidTest/connected/*coverage.ec'
+    ]))
+
+    reports {
+        xml.enabled = true
+        html.enabled = true
+    }
+
 }
 
 android {
@@ -66,6 +104,14 @@ android {
         jvmTarget = "1.8"
     }
     testOptions {
+        junitPlatform {
+            filters {
+                engines {
+                    include "spek2"
+                }
+            }
+        }
+        execution 'ANDROID_TEST_ORCHESTRATOR'
         animationsDisabled true
         unitTests.all {
             testLogging.events = ["passed", "skipped", "failed"]

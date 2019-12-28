@@ -6,6 +6,16 @@ plugins {
 }
 
 apply plugin: 'kotlin-kapt'
+apply plugin: 'jacoco'
+
+jacoco {
+    toolVersion = '0.8.5'
+}
+
+tasks.withType(Test) {
+    jacoco.includeNoLocationClasses = true
+    jacoco.excludes = ['jdk.internal.*']
+}
 
 android {
     buildToolsVersion "29.0.2"
