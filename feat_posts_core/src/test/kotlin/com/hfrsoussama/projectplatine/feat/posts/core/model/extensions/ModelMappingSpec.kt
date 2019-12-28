@@ -57,6 +57,13 @@ object ModelMappingSpec : Spek({
             assertThat(postWs.title).isEqualTo(postDb.title)
             assertThat(postWs.body).isEqualTo(postDb.body)
         }
+        it("UI model must have all database model attributes") {
+            val postUi = toUiModel(postDb)
+            assertThat(postUi.id).isEqualTo(postDb.postId)
+            assertThat(postUi.userId).isEqualTo(postDb.userWriterId)
+            assertThat(postUi.title).isEqualTo(postDb.title)
+            assertThat(postUi.body).isEqualTo(postDb.body)
+        }
 
     }
 
