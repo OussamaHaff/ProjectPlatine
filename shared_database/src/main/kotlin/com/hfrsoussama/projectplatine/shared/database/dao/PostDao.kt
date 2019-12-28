@@ -7,7 +7,7 @@ import com.hfrsoussama.projectplatine.shared.database.entities.PostWithCommentsD
 @Dao
 interface PostDao {
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(postDb: PostDb)
 
     @Query("SELECT * FROM post")
