@@ -2,6 +2,7 @@ package com.hfrsoussama.projectplatine.feat.posts.core.model.extensions
 
 import com.google.common.truth.Truth.*
 import com.hfrsoussama.projectplatine.feat.posts.core.model.remote.AddressWs
+import com.hfrsoussama.projectplatine.feat.posts.core.model.remote.CommentWs
 import com.hfrsoussama.projectplatine.feat.posts.core.model.remote.GeoLocalisationWs
 import com.hfrsoussama.projectplatine.feat.posts.core.model.remote.PostWs
 import org.spekframework.spek2.Spek
@@ -65,6 +66,34 @@ object ModelMappingSpec : Spek({
             assertThat(postUi.body).isEqualTo(postDb.body)
         }
 
+    }
+
+    describe("Comment model") {
+        val commentWs by memoized {
+            CommentWs(
+                postId = 1L,
+                id = 99L,
+                name = "lesam",
+                email = "bob@bob.com",
+                body = "the actual comment body"
+            )
+        }
+        val commentDb by memoized { commentWs.toDbModel() }
+        it("Database model must have all web service model attributes") {
+            assertThat(commentDb.postId).isEqualTo(commentWs.postId)
+            assertThat(commentDb.commentId).isEqualTo(commentWs.id)
+            assertThat(commentDb.authorName).isEqualTo(commentWs.name)
+            assertThat(commentDb.authorEmail).isEqualTo(commentWs.email)
+            assertThat(commentDb.body).isEqualTo(commentWs.body)
+        }
+        it("UI model must have all database model attributes") {
+            val commentUi = toUiModel(commentDb)
+            assertThat(commentUi.postId).isEqualTo(commentDb.postId)
+            assertThat(commentUi.id).isEqualTo(commentDb.commentId)
+            assertThat(commentUi.name).isEqualTo(commentDb.authorName)
+            assertThat(commentUi.email).isEqualTo(commentWs.email)
+            assertThat(commentUi.body).isEqualTo(commentWs.body)
+        }
     }
 
 })
