@@ -123,6 +123,7 @@ class PostDaoTest {
 
     @Test
     fun nullPointerExceptionIsRaisedWhenPostIsNotFound() = runBlocking {
+        database.clearAllTables()
         val postDb = postDao.getPostDbById(Random(99).nextLong())
         assertThat(postDb).isNull()
     }
