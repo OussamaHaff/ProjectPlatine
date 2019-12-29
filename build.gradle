@@ -14,6 +14,38 @@ buildscript {
     }
 }
 
+plugins {
+    id "org.sonarqube" version "2.8"
+}
+
+sonarqube {
+
+    properties {
+        property "sonar.projectKey", "project-platine"
+        property "sonar.projectName", "ProjectPlatine"
+        property "sonar.host.url", "http://localhost:9000"
+        property "sonar.exclusions", "**/BuildConfig.class,**/R.java,**/R\$*.java,src/main/gen/**/*,src/main/assets/**/*"
+
+        property "sonar.sources", "src/main/kotlin"
+        property "sonar.binaries", "build/tmp/kotlin-classes/liveDebug"
+        property "sonar.java.binaries", "build/tmp/kotlin-classes/liveDebug"
+        property "sonar.tests", "src/test/kotlin, src/androidTest/kotin"
+        property "sonar.java.test.binaries", "build/intermediates/classes/debug"
+
+        def unitTestsReportFiles = fileTree(dir: project.projectDir, includes: ['**/*.exec']).files
+        def uiTestsReportFiles = fileTree(dir: project.projectDir, includes: ['**/*.ec']).files
+        unitTestsReportFiles.addAll(uiTestsReportFiles)
+        def allTestsReportFiles = unitTestsReportFiles.join(", ")
+
+        property "sonar.jacoco.reportPaths", allTestsReportFiles
+        property "sonar.java.coveragePlugin", "jacoco"
+        property "sonar.junit.reportsPath", "build/test-results/testLiveDebugUnitTest"
+
+
+    }
+
+}
+
 allprojects {
     repositories {
         google()
