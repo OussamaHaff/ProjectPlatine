@@ -16,6 +16,7 @@ interface CommentDao {
     @Query("SELECT * FROM comment")
     suspend fun getAllCommentsDb(): List<CommentDb>
 
+    @Transaction
     @Query("SELECT * FROM post WHERE post_id=:postId")
     suspend fun getAllCommentsDbForPost(postId: Long): List<PostWithCommentsDb>
 
