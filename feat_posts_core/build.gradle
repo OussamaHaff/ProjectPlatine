@@ -100,6 +100,7 @@ dependencies {
     testImplementation "org.spekframework.spek2:spek-dsl-jvm:2.0.9"
     testImplementation "org.spekframework.spek2:spek-runner-junit5:2.0.9"
     testImplementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+    testImplementation "io.mockk:mockk:1.9.3"
 
 
     androidTestImplementation 'androidx.test:runner:1.2.0'
