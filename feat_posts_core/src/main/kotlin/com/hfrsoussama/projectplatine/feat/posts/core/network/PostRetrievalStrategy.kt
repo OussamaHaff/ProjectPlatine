@@ -14,7 +14,7 @@ interface PostRetrievalStrategy : RepositoryStrategy {
  *  and then retrieve them from database
  *
  */
-class DefaultStrategy : PostRetrievalStrategy {
+class DefaultPostRetrievalStrategy : PostRetrievalStrategy {
 
     override suspend fun retrievePosts(client: PostsWebServices, postDao: PostDao): List<PostUi> {
         client.getPosts()

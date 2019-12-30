@@ -5,7 +5,7 @@ import com.hfrsoussama.projectplatine.feat.posts.core.model.presentation.UserUi
 
 interface PostsRepository {
 
-    suspend fun getPosts(strategy: PostRetrievalStrategy = DefaultStrategy()) : List<PostUi>
+    suspend fun getPosts(strategy: PostRetrievalStrategy = DefaultPostRetrievalStrategy()) : List<PostUi>
 
     suspend fun getUser(userId: Long) : UserUi
 
