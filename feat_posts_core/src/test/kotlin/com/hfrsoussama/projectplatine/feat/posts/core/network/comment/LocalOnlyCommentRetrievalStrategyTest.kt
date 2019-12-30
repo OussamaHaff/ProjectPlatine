@@ -1,7 +1,9 @@
-package com.hfrsoussama.projectplatine.feat.posts.core.network
+package com.hfrsoussama.projectplatine.feat.posts.core.network.comment
 
 import com.google.common.truth.Truth.*
 import com.hfrsoussama.projectplatine.feat.posts.core.model.presentation.CommentUi
+import com.hfrsoussama.projectplatine.feat.posts.core.network.LocalOnlyCommentRetrievalStrategy
+import com.hfrsoussama.projectplatine.feat.posts.core.network.PostsWebServices
 import com.hfrsoussama.projectplatine.shared.database.dao.CommentDao
 import com.hfrsoussama.projectplatine.shared.database.entities.CommentDb
 import com.hfrsoussama.projectplatine.shared.database.entities.PostDb
@@ -17,7 +19,8 @@ class LocalOnlyCommentRetrievalStrategyTest {
     private val remoteClient = mockk<PostsWebServices>()
     private val commentDao = mockk<CommentDao>()
 
-    private val localOnlyRetrievalStrategy = LocalOnlyCommentRetrievalStrategy()
+    private val localOnlyRetrievalStrategy =
+        LocalOnlyCommentRetrievalStrategy()
 
     @Before
     fun generateStubs() {

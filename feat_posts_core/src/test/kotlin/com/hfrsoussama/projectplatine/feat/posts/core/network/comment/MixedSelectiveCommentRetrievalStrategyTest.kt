@@ -1,6 +1,8 @@
-package com.hfrsoussama.projectplatine.feat.posts.core.network
+package com.hfrsoussama.projectplatine.feat.posts.core.network.comment
 
 import com.hfrsoussama.projectplatine.feat.posts.core.model.remote.CommentWs
+import com.hfrsoussama.projectplatine.feat.posts.core.network.MixedSelectiveCommentRetrievalStrategy
+import com.hfrsoussama.projectplatine.feat.posts.core.network.PostsWebServices
 import com.hfrsoussama.projectplatine.shared.database.dao.CommentDao
 import com.hfrsoussama.projectplatine.shared.database.entities.CommentDb
 import com.hfrsoussama.projectplatine.shared.database.entities.PostDb
@@ -16,7 +18,10 @@ class MixedSelectiveCommentRetrievalStrategyTest {
     private val commentDao = mockk<CommentDao>()
 
     private val postId = 1L
-    private val mixedSelectiveStrategy = MixedSelectiveCommentRetrievalStrategy(postId)
+    private val mixedSelectiveStrategy =
+        MixedSelectiveCommentRetrievalStrategy(
+            postId
+        )
 
     @Before
     fun setUp() {

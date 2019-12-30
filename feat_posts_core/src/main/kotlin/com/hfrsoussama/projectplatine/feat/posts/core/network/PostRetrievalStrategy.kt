@@ -31,7 +31,7 @@ class DefaultPostRetrievalStrategy : PostRetrievalStrategy {
  * Local data strategy retrieves posts only from database
  *
  */
-class LocalDataOnlyStrategy : PostRetrievalStrategy {
+class LocalPostDataOnlyStrategy : PostRetrievalStrategy {
 
     override suspend fun retrievePosts(client: PostsWebServices, postDao: PostDao): List<PostUi> =
         postDao.getAllPostsDb().map { toUiModel(it) }

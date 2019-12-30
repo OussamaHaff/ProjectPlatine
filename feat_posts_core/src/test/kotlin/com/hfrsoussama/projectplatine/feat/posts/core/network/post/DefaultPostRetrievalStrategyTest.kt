@@ -1,6 +1,8 @@
-package com.hfrsoussama.projectplatine.feat.posts.core.network
+package com.hfrsoussama.projectplatine.feat.posts.core.network.post
 
 import com.hfrsoussama.projectplatine.feat.posts.core.model.remote.PostWs
+import com.hfrsoussama.projectplatine.feat.posts.core.network.DefaultPostRetrievalStrategy
+import com.hfrsoussama.projectplatine.feat.posts.core.network.PostsWebServices
 import com.hfrsoussama.projectplatine.shared.database.dao.PostDao
 import com.hfrsoussama.projectplatine.shared.database.entities.PostDb
 import io.mockk.*
@@ -13,7 +15,8 @@ class DefaultPostRetrievalStrategyTest {
     private val remoteClient = mockk<PostsWebServices>()
     private val postDao = mockk<PostDao>()
 
-    private val defaultPostRetrievalStrategy = DefaultPostRetrievalStrategy()
+    private val defaultPostRetrievalStrategy =
+        DefaultPostRetrievalStrategy()
 
     @Before
     fun stubResults() {
