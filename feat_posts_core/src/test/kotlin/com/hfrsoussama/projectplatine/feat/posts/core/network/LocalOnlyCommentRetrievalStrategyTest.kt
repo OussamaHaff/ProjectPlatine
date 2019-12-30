@@ -12,7 +12,7 @@ import org.junit.Before
 import org.junit.Test
 
 
-class CommentRetrievalStrategyTest {
+class LocalOnlyCommentRetrievalStrategyTest {
 
     private val remoteClient = mockk<PostsWebServices>()
     private val commentDao = mockk<CommentDao>()

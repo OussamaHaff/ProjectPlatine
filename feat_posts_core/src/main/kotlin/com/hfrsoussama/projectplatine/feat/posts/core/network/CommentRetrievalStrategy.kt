@@ -35,22 +35,13 @@ class MixedSelectiveCommentRetrievalStrategy(
     ): List<CommentUi> {
 
         remoteClient.getCommentsByPostId(postId)
-            .map {
-                println(it)
-                it.toDbModel()
-            }
-            .forEach {
-                println(it)
-                commentDao.insertCommentDb(it)
-            }
+            .map { it.toDbModel() }
+            .forEach { commentDao.insertCommentDb(it) }
 
         return commentDao.getAllCommentsDbForPost(postId)
             .first()
             .commentsDbList
-            .map {
-                println("Comment : $it")
-                toUiModel(it)
-            }
+            .map { toUiModel(it) }
     }
 
 }
