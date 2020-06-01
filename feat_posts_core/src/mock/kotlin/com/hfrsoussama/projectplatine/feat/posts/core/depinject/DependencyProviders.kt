@@ -2,7 +2,11 @@ package com.hfrsoussama.projectplatine.feat.posts.core.depinject
 
 import android.content.Context
 import com.google.gson.GsonBuilder
-import com.hfrsoussama.projectplatine.feat.posts.core.network.*
+import com.hfrsoussama.projectplatine.feat.posts.core.network.CommentRepository
+import com.hfrsoussama.projectplatine.feat.posts.core.network.CommentRepositoryImpl
+import com.hfrsoussama.projectplatine.feat.posts.core.network.PostsRepository
+import com.hfrsoussama.projectplatine.feat.posts.core.network.PostsRepositoryImpl
+import com.hfrsoussama.projectplatine.feat.posts.core.network.PostsWebServices
 import com.hfrsoussama.projectplatine.shared.database.PostsDatabase
 import com.hfrsoussama.projectplatine.shared.database.dao.CommentDao
 import com.hfrsoussama.projectplatine.shared.database.dao.PostDao

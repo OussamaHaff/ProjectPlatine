@@ -1,6 +1,10 @@
 package com.hfrsoussama.projectplatine.shared.database.entities
 
-import androidx.room.*
+import androidx.room.Entity
+import androidx.room.Index
+import androidx.room.PrimaryKey
+import androidx.room.ColumnInfo
+import androidx.room.Embedded
 
 @Entity(
     tableName = "user",

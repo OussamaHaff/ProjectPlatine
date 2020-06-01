@@ -19,7 +19,7 @@ class MainActivity : BaseActivity() {
     private val errorObserver = Observer<Throwable> { attachErrorFragment() }
 
     private fun attachErrorFragment() {
-
+        // Do Nothing
     }
 
 
